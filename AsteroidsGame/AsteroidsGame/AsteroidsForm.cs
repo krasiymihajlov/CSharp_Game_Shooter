@@ -61,8 +61,8 @@ namespace AsteroidsGame
 
             Asteroid.Hide();
 
-            ExplodingAsteroid.Left = Asteroid.Left;
-            ExplodingAsteroid.Top = Asteroid.Top;
+            ExplodingAsteroid.Left = Asteroid.Left - 35;
+            ExplodingAsteroid.Top = Asteroid.Top - 40;
             ExplodingAsteroid.Show();
             explodeSound.Play();
 
