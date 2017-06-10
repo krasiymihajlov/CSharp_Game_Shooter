@@ -14,13 +14,13 @@ namespace AsteroidsGame
     public partial class AsteroidsForm : Form
     {
         Random rdn = new Random();
-        SoundPlayer mouseSound;
+        SoundPlayer mouseSound = new SoundPlayer("../../Resources/Rocket.wav");
+        SoundPlayer explodeSound = new SoundPlayer("../../Resources/Bomb.wav");
 
         public AsteroidsForm()
         {
             InitializeComponent();
-
-            mouseSound = new SoundPlayer("../../Resources/Rocket.wav");
+            
             ExplodingAsteroid.Hide();
         }
 
@@ -64,6 +64,7 @@ namespace AsteroidsGame
             ExplodingAsteroid.Left = Asteroid.Left;
             ExplodingAsteroid.Top = Asteroid.Top;
             ExplodingAsteroid.Show();
+            explodeSound.Play();
 
             AsteroidPositionTimer.Start();
         }
