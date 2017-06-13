@@ -12,6 +12,7 @@ namespace AsteroidsGame
     public partial class AsteroidsForm : Form
     {
         private Random rnd = new Random();
+        private int totalShots = 0;
         private static int score = 0;
         private static int missingShots = 0;
         private int X = 200;
@@ -95,7 +96,7 @@ namespace AsteroidsGame
                     NukeCloud.Location = new Point(X, Y);
                     NukeCloud.Show();
 
-                    NukeCitySound.Play();
+                    PlaySound.PlayExplodeSound(); 
 
                     // New Asteroid Spawn Location
                     X = rnd.Next(Asteroid.Width + 10, this.Width - Asteroid.Width - 10);
