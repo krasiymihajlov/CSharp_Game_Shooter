@@ -2,7 +2,7 @@
 
 namespace AsteroidsGame
 {
-    class Rocket
+    internal class Rocket
     {
         internal static void DestroyTarget(int x, int y)
         {
