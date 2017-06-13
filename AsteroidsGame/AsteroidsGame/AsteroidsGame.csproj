@@ -53,6 +53,12 @@
       <DependentUpon>AsteroidsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Rocket.cs" />
+    <Compile Include="Scores\MissingShot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Scores\Score.cs" />
+    <Compile Include="Scores\TotalShots.cs" />
+    <Compile Include="Sounds\PlaySound.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AsteroidsForm.resx">
@@ -98,6 +104,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bomb.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Enemy\" />
+    <Folder Include="Menu\" />
+    <Folder Include="Player\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rigth.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
