@@ -127,16 +127,28 @@
   <data name="ExplodingAsteroid" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ExplodingAsteroid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Gunsight" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gunsight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Rocket" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Rocket.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Stoun" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Stoun.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="rigth" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\rigth.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Asteroid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Asteroid.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Sight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bomb1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bomb.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="nukecloud" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nukecloud.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gun_sound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gun_sound.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Bullet" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bullet-png-39209.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

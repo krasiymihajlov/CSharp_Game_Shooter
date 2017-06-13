@@ -106,12 +106,22 @@
     <None Include="Resources\bomb.wav" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Enemy\" />
-    <Folder Include="Menu\" />
-    <Folder Include="Player\" />
+    <None Include="Resources\Asteroid.gif" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\rigth.jpg" />
+    <None Include="Resources\Sight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bomb.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nukecloud.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gun_sound.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bullet-png-39209.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

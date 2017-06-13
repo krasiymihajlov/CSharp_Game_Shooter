@@ -33,6 +33,8 @@
             this.Asteroid = new System.Windows.Forms.PictureBox();
             this.AsteroidPositionTimer = new System.Windows.Forms.Timer(this.components);
             this.ExplodingAsteroid = new System.Windows.Forms.PictureBox();
+            this.NukeCloud = new System.Windows.Forms.PictureBox();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,6 +42,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Asteroid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplodingAsteroid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NukeCloud)).BeginInit();
             this.SuspendLayout();
             // 
             // mouseXposer
@@ -53,11 +56,11 @@
             // Asteroid
             // 
             this.Asteroid.BackColor = System.Drawing.Color.Transparent;
-            this.Asteroid.Image = global::AsteroidsGame.Properties.Resources.Stoun;
-            this.Asteroid.Location = new System.Drawing.Point(317, 158);
+            this.Asteroid.Image = global::AsteroidsGame.Properties.Resources.Bomb1;
+            this.Asteroid.Location = new System.Drawing.Point(316, 0);
             this.Asteroid.Name = "Asteroid";
-            this.Asteroid.Size = new System.Drawing.Size(81, 65);
-            this.Asteroid.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.Asteroid.Size = new System.Drawing.Size(50, 50);
+            this.Asteroid.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Asteroid.TabIndex = 1;
             this.Asteroid.TabStop = false;
             this.Asteroid.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Asteroid_MouseClick);
@@ -65,17 +68,18 @@
             // AsteroidPositionTimer
             // 
             this.AsteroidPositionTimer.Enabled = true;
-            this.AsteroidPositionTimer.Interval = 800;
+            this.AsteroidPositionTimer.Interval = 1;
             this.AsteroidPositionTimer.Tick += new System.EventHandler(this.AsteroidPositionTimer_Tick);
             // 
             // ExplodingAsteroid
             // 
             this.ExplodingAsteroid.BackColor = System.Drawing.Color.Transparent;
             this.ExplodingAsteroid.Image = global::AsteroidsGame.Properties.Resources.ExplodingAsteroid;
-            this.ExplodingAsteroid.Location = new System.Drawing.Point(121, 128);
+            this.ExplodingAsteroid.Location = new System.Drawing.Point(246, 0);
+            this.ExplodingAsteroid.MaximumSize = new System.Drawing.Size(75, 75);
             this.ExplodingAsteroid.Name = "ExplodingAsteroid";
-            this.ExplodingAsteroid.Size = new System.Drawing.Size(147, 147);
-            this.ExplodingAsteroid.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ExplodingAsteroid.Size = new System.Drawing.Size(75, 75);
+            this.ExplodingAsteroid.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ExplodingAsteroid.TabIndex = 2;
             this.ExplodingAsteroid.TabStop = false;
             // 
@@ -121,6 +125,24 @@
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
+            // NukeCloud
+            // 
+            this.NukeCloud.BackColor = System.Drawing.Color.Transparent;
+            this.NukeCloud.Image = global::AsteroidsGame.Properties.Resources.nukecloud;
+            this.NukeCloud.Location = new System.Drawing.Point(291, 450);
+            this.NukeCloud.MaximumSize = new System.Drawing.Size(75, 75);
+            this.NukeCloud.Name = "NukeCloud";
+            this.NukeCloud.Size = new System.Drawing.Size(75, 75);
+            this.NukeCloud.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.NukeCloud.TabIndex = 3;
+            this.NukeCloud.TabStop = false;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
             // AsteroidsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -131,6 +153,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.NukeCloud);
             this.Controls.Add(this.ExplodingAsteroid);
             this.Controls.Add(this.Asteroid);
             this.Controls.Add(this.mouseXposer);
@@ -143,8 +166,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Asteroid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplodingAsteroid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NukeCloud)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -158,6 +181,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.PictureBox NukeCloud;
     }
 }
 
