@@ -26,8 +26,8 @@ namespace AsteroidsGame.Sounds
         /// </summary>
         public static SoundPlayer MouseSound
         {
-            get => mouseSound;
-            set => mouseSound = value;
+            get { return mouseSound; }
+            set { mouseSound = value; }
         }
 
         /// <summary>
@@ -35,8 +35,8 @@ namespace AsteroidsGame.Sounds
         /// </summary>
         public static SoundPlayer ExplodeSound
         {
-            get => explodeSound;
-            set => explodeSound = value;
+            get { return explodeSound; }
+            set { explodeSound = value; }
         }
 
         /// <summary>

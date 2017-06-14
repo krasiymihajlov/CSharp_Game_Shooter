@@ -14,8 +14,8 @@ namespace AsteroidsGame.Scores
         /// </summary>
         public static int MissingShots1
         {
-            get => missingShots;
-            set => missingShots = value;
+            get { return missingShots; } 
+            set { missingShots = value; }
         }
 
         public MissingShot()
