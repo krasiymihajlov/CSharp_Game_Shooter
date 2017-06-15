@@ -129,6 +129,15 @@ namespace AsteroidsGame.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Laser {
+            get {
+                return ResourceManager.GetStream("Laser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap nukecloud {
@@ -139,21 +148,21 @@ namespace AsteroidsGame.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap rigth {
-            get {
-                object obj = ResourceManager.GetObject("rigth", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream Rocket {
             get {
                 return ResourceManager.GetStream("Rocket", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Rocket1 {
+            get {
+                object obj = ResourceManager.GetObject("Rocket1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

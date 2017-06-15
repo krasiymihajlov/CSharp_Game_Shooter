@@ -52,6 +52,7 @@
     <Compile Include="AsteroidsForm.Designer.cs">
       <DependentUpon>AsteroidsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Bomb.cs" />
     <Compile Include="Rocket.cs" />
     <Compile Include="Scores\MissingShot.cs">
       <SubType>Form</SubType>
@@ -122,6 +123,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bullet-png-39209.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Rocket.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Laser.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

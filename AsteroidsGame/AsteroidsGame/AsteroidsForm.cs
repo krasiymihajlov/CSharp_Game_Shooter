@@ -12,15 +12,14 @@ namespace AsteroidsGame
     public partial class AsteroidsForm : Form
     {
         private Random rnd = new Random();
-        private int totalShots = 0;
+        private static int totalShots = 0;
         private static int score = 0;
         private static int missingShots = 0;
-        private int X = 200;
-        private int Y = -30;
-        private int DestroyedImageCounter = 0;
-        private bool Destroyed = false;
-        private int NukeCloudCounter = 0;
-        private bool NukeCity = false;
+        private static int DestroyedImageCounter = 0;
+        private static bool Destroyed = false;
+        private static int NukeCloudCounter = 0;
+        private static bool NukeCity = false;
+
 
         public AsteroidsForm()
         {
@@ -28,6 +27,11 @@ namespace AsteroidsGame
 
             ExplodingAsteroid.Hide();
             NukeCloud.Hide();
+            RocketPB.Hide();
+            Bomb.X = 200;
+            Bomb.Y = -30;
+            Bomb.Life = 3;
+            Rocket.Count = 10;
         }
 
         private void ShotFunction()
@@ -67,9 +71,20 @@ namespace AsteroidsGame
 
         private void AsteroidPositionTimer_Tick(object sender, EventArgs e)
         {
+            // Rocket movement
+            if (Rocket.IsFired)
+            {
+                Rocket.Move(RocketPB, BombPB);
+            }
+            // ----------------------------------
 
-            Y += 7;
-            Asteroid.Location = new Point(X, Y);
+            if (Bomb.IsExploding)
+            {
+                DestroyBomb();
+            }
+
+            Bomb.Y += 7;
+            BombPB.Location = new Point(Bomb.X, Bomb.Y);
 
             //Asteroid.Show();
 
@@ -78,29 +93,30 @@ namespace AsteroidsGame
                 ExplodingAsteroid.Hide();
                 DestroyedImageCounter = 0;
 
-                X = rnd.Next(Asteroid.Width + 10, this.Width - Asteroid.Width - 10);
-                Y = -30;
+                Bomb.X = rnd.Next(BombPB.Width + 10, this.Width - BombPB.Width - 10);
+                Bomb.Y = -30;
                 Destroyed = false;
-                Asteroid.Location = new Point(X, Y);
-                Asteroid.Show();
+                BombPB.Location = new Point(Bomb.X, Bomb.Y);
+                BombPB.Show();
             }
             else if (Destroyed)
             {
                 DestroyedImageCounter++;
             }
-            else if (Y >= rnd.Next(500, 600) || NukeCity)
+            else if (Bomb.Y >= rnd.Next(500, 600) || NukeCity)
             {
                 if (NukeCloudCounter == 0)
                 {
                     NukeCity = true;
-                    NukeCloud.Location = new Point(X, Y);
+                    NukeCloud.Location = new Point(Bomb.X, Bomb.Y);
                     NukeCloud.Show();
 
-                    PlaySound.PlayExplodeSound(); 
+                    PlaySound.PlayExplodeSound();
 
                     // New Asteroid Spawn Location
-                    X = rnd.Next(Asteroid.Width + 10, this.Width - Asteroid.Width - 10);
-                    Y = -30;
+                    Bomb.X = rnd.Next(BombPB.Width + 10, this.Width - BombPB.Width - 10);
+                    Bomb.Y = -30;
+                    Bomb.Life = 3;
 
                     NukeCloudCounter++;
                 }
@@ -120,26 +136,60 @@ namespace AsteroidsGame
         // Shot Outside the target
         private void AsteroidsForm_MouseClick(object sender, MouseEventArgs e)
         {
-            PlaySound.PlayMouseSound();
+            if (e.Button == MouseButtons.Right)
+            {
+                if (Rocket.Count > 0 && !Rocket.IsFired)
+                {
+                    Rocket.Count--;
+                    PlaySound.PlayMouseSound(e.Button);
+                    Rocket.Fire(RocketPB, Height, e.X);
+                }
+            }
+            else // mouse button == Left
+            {
+                PlaySound.PlayMouseSound(e.Button); // Different shot and sound
+            }
 
-            // Rocket.BlankShot();
             MissShot();
         }
 
         // Shot Inside the target
         private void Asteroid_MouseClick(object sender, MouseEventArgs e)
         {
-            ShotFunction();
-            PlaySound.PlayMouseSound();
+            if (e.Button == MouseButtons.Right)
+            {
+                if (Rocket.Count > 0 && !Rocket.IsFired)
+                {
+                    Rocket.Count--;
+                    PlaySound.PlayMouseSound(e.Button);
+                    Rocket.Fire(RocketPB, Height, BombPB.Left + BombPB.Width / 4);
+                }
+            }
+            else
+            {
+                ShotFunction();
+                PlaySound.PlayMouseSound(e.Button);
+                Bomb.Life--;
+            }
 
-            // Rocket.DestroyTarget(e.X, e.Y);
+            if (Bomb.IsExploding || Bomb.Life <= 0)
+            {
+                DestroyBomb();
+            }
+        }
 
-            Asteroid.Hide();
-            ExplodingAsteroid.Left = Asteroid.Left - 10;
-            ExplodingAsteroid.Top = Asteroid.Top - 20;
+        private void DestroyBomb()
+        {
+            BombPB.Hide();
+            ExplodingAsteroid.Left = BombPB.Left - 10;
+            ExplodingAsteroid.Top = BombPB.Top - 20;
             ExplodingAsteroid.Show();
             PlaySound.PlayExplodeSound();
             Destroyed = true;
+            Bomb.IsExploding = false;
+            Bomb.Life = 3;
+            Rocket.IsFired = false;
+            RocketPB.Hide();
 
             AsteroidPositionTimer.Start();
         }
