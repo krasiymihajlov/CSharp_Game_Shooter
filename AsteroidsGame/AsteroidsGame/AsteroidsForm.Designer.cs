@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AsteroidsForm));
             this.mouseXposer = new System.Windows.Forms.Label();
             this.BombPB = new System.Windows.Forms.PictureBox();
             this.AsteroidPositionTimer = new System.Windows.Forms.Timer(this.components);
@@ -153,7 +154,7 @@
             this.RocketPB.Image = global::AsteroidsGame.Properties.Resources.Rocket1;
             this.RocketPB.Location = new System.Drawing.Point(261, 243);
             this.RocketPB.Name = "RocketPB";
-            this.RocketPB.Size = new System.Drawing.Size(30, 68);
+            this.RocketPB.Size = new System.Drawing.Size(30, 112);
             this.RocketPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.RocketPB.TabIndex = 7;
             this.RocketPB.TabStop = false;
@@ -185,10 +186,11 @@
             this.Controls.Add(this.BombPB);
             this.Controls.Add(this.mouseXposer);
             this.Controls.Add(this.RocketPB);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(700, 700);
             this.MinimumSize = new System.Drawing.Size(700, 700);
             this.Name = "AsteroidsForm";
-            this.Text = "wwww";
+            this.Text = "NY Bombs - Save your Town";
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.AsteroidsForm_MouseClick);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AsteroidsForm_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.BombPB)).EndInit();
