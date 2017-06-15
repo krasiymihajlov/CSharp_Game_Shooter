@@ -11,6 +11,8 @@ namespace AsteroidsGame
 {
     public partial class AsteroidsForm : Form
     {
+        private const int BombLife = 3;
+
         private Random rnd = new Random();
         private static int totalShots = 0;
         private static int score = 0;
@@ -30,8 +32,9 @@ namespace AsteroidsGame
             RocketPB.Hide();
             Bomb.X = 200;
             Bomb.Y = -30;
-            Bomb.Life = 3;
+            Bomb.Life = BombLife;
             Rocket.Count = 10;
+            LaserPB.Hide();
         }
 
         private void ShotFunction()
@@ -71,22 +74,32 @@ namespace AsteroidsGame
 
         private void AsteroidPositionTimer_Tick(object sender, EventArgs e)
         {
-            // Rocket movement
+            // Rocket movement >>------------------>
             if (Rocket.IsFired)
             {
                 Rocket.Move(RocketPB, BombPB);
             }
-            // ----------------------------------
+            // <----------------------------------<<
 
             if (Bomb.IsExploding)
             {
                 DestroyBomb();
             }
 
+            // Laser >>---------------------------->
+            if (Laser.TimeCounter > 0)
+            {
+                Laser.TimeCounter--;
+            }
+
+            if (Laser.TimeCounter <= 0)
+            {
+                LaserPB.Hide();
+            }
+            // <----------------------------------<<
+
             Bomb.Y += 7;
             BombPB.Location = new Point(Bomb.X, Bomb.Y);
-
-            //Asteroid.Show();
 
             if (DestroyedImageCounter >= 10 && Destroyed)
             {
@@ -116,7 +129,7 @@ namespace AsteroidsGame
                     // New Asteroid Spawn Location
                     Bomb.X = rnd.Next(BombPB.Width + 10, this.Width - BombPB.Width - 10);
                     Bomb.Y = -30;
-                    Bomb.Life = 3;
+                    Bomb.Life = BombLife;
 
                     NukeCloudCounter++;
                 }
@@ -147,7 +160,8 @@ namespace AsteroidsGame
             }
             else // mouse button == Left
             {
-                PlaySound.PlayMouseSound(e.Button); // Different shot and sound
+                PlaySound.PlayMouseSound(e.Button);
+                Laser.LightUp(LaserPB, e.X, BombPB, false);
             }
 
             MissShot();
@@ -156,7 +170,7 @@ namespace AsteroidsGame
         // Shot Inside the target
         private void Asteroid_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right) // Rocket
             {
                 if (Rocket.Count > 0 && !Rocket.IsFired)
                 {
@@ -165,11 +179,12 @@ namespace AsteroidsGame
                     Rocket.Fire(RocketPB, Height, BombPB.Left + BombPB.Width / 4);
                 }
             }
-            else
+            else // Laser
             {
                 ShotFunction();
                 PlaySound.PlayMouseSound(e.Button);
                 Bomb.Life--;
+                Laser.LightUp(LaserPB, e.X, BombPB, true);
             }
 
             if (Bomb.IsExploding || Bomb.Life <= 0)
@@ -192,6 +207,7 @@ namespace AsteroidsGame
             RocketPB.Hide();
 
             AsteroidPositionTimer.Start();
+            LaserPB.Hide();
         }
 
         //private void Asteroid_Click(object sender, EventArgs e)

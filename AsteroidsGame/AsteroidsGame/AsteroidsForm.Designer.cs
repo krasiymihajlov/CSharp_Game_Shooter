@@ -40,11 +40,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.RocketPB = new System.Windows.Forms.PictureBox();
+            this.LaserPB = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.BombPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplodingAsteroid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NukeCloud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RocketPB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LaserPB)).BeginInit();
             this.SuspendLayout();
             // 
             // mouseXposer
@@ -156,12 +158,24 @@
             this.RocketPB.TabIndex = 7;
             this.RocketPB.TabStop = false;
             // 
+            // LaserPB
+            // 
+            this.LaserPB.BackColor = System.Drawing.Color.Transparent;
+            this.LaserPB.Image = global::AsteroidsGame.Properties.Resources.LaserLight;
+            this.LaserPB.Location = new System.Drawing.Point(281, -12);
+            this.LaserPB.Name = "LaserPB";
+            this.LaserPB.Size = new System.Drawing.Size(3, 720);
+            this.LaserPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.LaserPB.TabIndex = 8;
+            this.LaserPB.TabStop = false;
+            // 
             // AsteroidsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::AsteroidsGame.Properties.Resources.Back;
             this.ClientSize = new System.Drawing.Size(684, 661);
+            this.Controls.Add(this.LaserPB);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -182,6 +196,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.NukeCloud)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RocketPB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LaserPB)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -200,6 +215,7 @@
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.PictureBox NukeCloud;
         private System.Windows.Forms.PictureBox RocketPB;
+        private System.Windows.Forms.PictureBox LaserPB;
     }
 }
 
