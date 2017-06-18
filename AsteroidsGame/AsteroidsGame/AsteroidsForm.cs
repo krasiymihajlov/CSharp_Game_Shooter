@@ -5,6 +5,7 @@ using System.Media;
 using System.Windows.Forms;
 using AsteroidsGame.Sounds;
 using System.Windows.Forms.VisualStyles;
+using AsteroidsGame.GameOption;
 using AsteroidsGame.Properties;
 
 namespace AsteroidsGame
@@ -27,6 +28,7 @@ namespace AsteroidsGame
         {
             InitializeComponent();
 
+            label1.Hide();
             ExplodingAsteroid.Hide();
             NukeCloud.Hide();
             RocketPB.Hide();
@@ -37,29 +39,31 @@ namespace AsteroidsGame
             LaserPB.Hide();
         }
 
-        private void ShotFunction()
+        private void ScoreCounter()
         {
-            
             score++;
-            label3.Text = "Score = " + score;
-            totalShots++;
-            label1.Text = "Total Shots = " + totalShots;
+            ScoreCount.Text = "Score = " + score;
+            //totalShots++;
+            //label1.Text = "Total Shots = " + totalShots;
         }
 
         public void MissShot()
         {
             missingShots++;
-            label2.Text = "Missing Shots = " + missingShots;
             totalShots++;
             label1.Text = "Total Shots = " + totalShots;
 
-            if (missingShots >= 20)
-            {
-                label2.Hide();
-                label1.Hide();
-                label3.Hide();
+            //if (missingShots >= 20)
+            //{
+            //    Rockets.Hide();
+            //    label1.Hide();
+            //    ScoreCount.Hide();
+            //}
+        }
 
-            }
+        public void RocketCount(int count)
+        {
+            Rockets.Text = "Rockets: " + count;
         }
 
         private void AsteroidsForm_MouseMove(object sender, MouseEventArgs e)
@@ -153,9 +157,15 @@ namespace AsteroidsGame
             {
                 if (Rocket.Count > 0 && !Rocket.IsFired)
                 {
-                    Rocket.Count--;
+                    int count = Rocket.Count--;
+                    RocketCount(count - 1);                  // label for rocket counting
                     PlaySound.PlayMouseSound(e.Button);
                     Rocket.Fire(RocketPB, Height, e.X);
+
+                    if (Rocket.IsFired)
+                    {
+                        ScoreCounter();                    // label for Score counting
+                    }
                 }
             }
             else // mouse button == Left
@@ -174,16 +184,22 @@ namespace AsteroidsGame
             {
                 if (Rocket.Count > 0 && !Rocket.IsFired)
                 {
-                    Rocket.Count--;
+                    int count = Rocket.Count--;
+                    RocketCount(count - 1);
+                    ScoreCounter();         // label for rocket counting
                     PlaySound.PlayMouseSound(e.Button);
                     Rocket.Fire(RocketPB, Height, BombPB.Left + BombPB.Width / 4);
                 }
             }
             else // Laser
             {
-                ShotFunction();
+                
                 PlaySound.PlayMouseSound(e.Button);
                 Bomb.Life--;
+                if (Bomb.Life == 0)
+                {
+                    ScoreCounter();    // label for Score counting
+                }
                 Laser.LightUp(LaserPB, e.X, BombPB, true);
             }
 
@@ -210,8 +226,9 @@ namespace AsteroidsGame
             LaserPB.Hide();
         }
 
-        //private void Asteroid_Click(object sender, EventArgs e)
-        //{
-        //}
+        private void QuitButton_Click(object sender, EventArgs e)
+        {
+            QuitGame.ExitGame();
+        }
     }
 }

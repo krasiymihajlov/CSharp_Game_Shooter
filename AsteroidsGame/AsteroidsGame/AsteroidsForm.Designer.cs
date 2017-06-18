@@ -36,18 +36,22 @@
             this.ExplodingAsteroid = new System.Windows.Forms.PictureBox();
             this.NukeCloud = new System.Windows.Forms.PictureBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.ScoreCount = new System.Windows.Forms.Label();
+            this.Rockets = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.RocketPB = new System.Windows.Forms.PictureBox();
             this.LaserPB = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.QuitButton = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.BombPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplodingAsteroid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NukeCloud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RocketPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LaserPB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QuitButton)).BeginInit();
             this.SuspendLayout();
             // 
             // mouseXposer
@@ -106,37 +110,37 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // label3
+            // ScoreCount
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.label3.Font = new System.Drawing.Font("Arial Narrow", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(426, 516);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(122, 33);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Score = 0";
+            this.ScoreCount.AutoSize = true;
+            this.ScoreCount.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.ScoreCount.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ScoreCount.Location = new System.Drawing.Point(339, 597);
+            this.ScoreCount.Name = "ScoreCount";
+            this.ScoreCount.Size = new System.Drawing.Size(101, 29);
+            this.ScoreCount.TabIndex = 5;
+            this.ScoreCount.Text = "Score = 0";
             // 
-            // label2
+            // Rockets
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.label2.Font = new System.Drawing.Font("Arial", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(426, 469);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(262, 34);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Missing Shots = 0";
+            this.Rockets.AutoSize = true;
+            this.Rockets.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.Rockets.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Rockets.Location = new System.Drawing.Point(339, 565);
+            this.Rockets.Name = "Rockets";
+            this.Rockets.Size = new System.Drawing.Size(145, 29);
+            this.Rockets.TabIndex = 4;
+            this.Rockets.Text = "Rockets: 10";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.label1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.label1.Font = new System.Drawing.Font("Arial", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(428, 423);
+            this.label1.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(12, 565);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(221, 34);
+            this.label1.Size = new System.Drawing.Size(184, 29);
             this.label1.TabIndex = 3;
             this.label1.Text = "Total Shots = 0";
             // 
@@ -170,16 +174,38 @@
             this.LaserPB.TabIndex = 8;
             this.LaserPB.TabStop = false;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(-23, -46);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox2.TabIndex = 9;
+            this.pictureBox2.TabStop = false;
+            // 
+            // QuitButton
+            // 
+            this.QuitButton.Image = ((System.Drawing.Image)(resources.GetObject("QuitButton.Image")));
+            this.QuitButton.InitialImage = ((System.Drawing.Image)(resources.GetObject("QuitButton.InitialImage")));
+            this.QuitButton.Location = new System.Drawing.Point(522, 565);
+            this.QuitButton.Name = "QuitButton";
+            this.QuitButton.Size = new System.Drawing.Size(96, 61);
+            this.QuitButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.QuitButton.TabIndex = 10;
+            this.QuitButton.TabStop = false;
+            this.QuitButton.Click += new System.EventHandler(this.QuitButton_Click);
+            // 
             // AsteroidsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::AsteroidsGame.Properties.Resources.Back;
             this.ClientSize = new System.Drawing.Size(684, 661);
+            this.Controls.Add(this.QuitButton);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.LaserPB);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.ScoreCount);
+            this.Controls.Add(this.Rockets);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.NukeCloud);
             this.Controls.Add(this.ExplodingAsteroid);
@@ -199,6 +225,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RocketPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LaserPB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QuitButton)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,14 +238,16 @@
         private System.Windows.Forms.PictureBox BombPB;
         private System.Windows.Forms.Timer AsteroidPositionTimer;
         private System.Windows.Forms.PictureBox ExplodingAsteroid;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label ScoreCount;
+        private System.Windows.Forms.Label Rockets;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.PictureBox NukeCloud;
         private System.Windows.Forms.PictureBox RocketPB;
         private System.Windows.Forms.PictureBox LaserPB;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox QuitButton;
     }
 }
 
