@@ -9,5 +9,4 @@ public static class Gift
     public static bool IsExploding { get; set; }
 
     public static int Life { get; set; }
-
 }

@@ -107,7 +107,7 @@
             this.NukeCloud.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.NukeCloud.TabIndex = 3;
             this.NukeCloud.TabStop = false;
-            this.NukeCloud.Click += new System.EventHandler(this.NukeCloud_Click);
+         
             // 
             // imageList1
             // 
@@ -244,7 +244,6 @@
             this.MinimumSize = new System.Drawing.Size(700, 700);
             this.Name = "AsteroidsForm";
             this.Text = "NY Bombs - Save your Town";
-            this.Load += new System.EventHandler(this.AsteroidsForm_Load);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.AsteroidsForm_MouseClick);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AsteroidsForm_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.BombPB)).EndInit();
