@@ -38,7 +38,7 @@ namespace AsteroidsGame
             BombPB.BringToFront();
 
             Bomb.X = 200;
-            Bomb.Y = -30;
+            Bomb.Y = -60;
             Bomb.Life = BombLife;
             Rocket.Count = 10;
         }
@@ -83,6 +83,7 @@ namespace AsteroidsGame
 
         private void AsteroidPositionTimer_Tick(object sender, EventArgs e)
         {
+
             if (!StartGame.GameIsStarted())
             {
                 AsteroidPositionTimer.Stop();
@@ -203,14 +204,10 @@ namespace AsteroidsGame
                 if (Rocket.Count > 0 && !Rocket.IsFired)
                 {
                     int count = Rocket.Count--;
-                    RocketCount(count - 1);                  // label for rocket counting
+                    RocketCount(count - 1);
+                   // ScoreCounter();                    // label for rocket counting
                     PlaySound.PlayMouseSound(e.Button);
-                    Rocket.Fire(RocketPB, Height, e.X);
-
-                    if (Rocket.IsFired)
-                    {
-                        ScoreCounter();                    // label for Score counting
-                    }
+                    Rocket.Fire(RocketPB, Height, e.X);                    
                 }
             }
             else // mouse button == Left
@@ -230,8 +227,7 @@ namespace AsteroidsGame
                 if (Rocket.Count > 0 && !Rocket.IsFired)
                 {
                     int count = Rocket.Count--;
-                    RocketCount(count - 1);
-                    ScoreCounter();         // label for rocket counting
+                    RocketCount(count - 1);   
                     PlaySound.PlayMouseSound(e.Button);
                     Rocket.Fire(RocketPB, Height, BombPB.Left + BombPB.Width / 4);
                 }
@@ -240,10 +236,6 @@ namespace AsteroidsGame
             {
                 PlaySound.PlayMouseSound(e.Button);
                 Bomb.Life--;
-                if (Bomb.Life == 0)
-                {
-                    ScoreCounter();    // label for Score counting
-                }
                 Laser.LightUp(LaserPB, e.X, BombPB, true);
             }
 
@@ -265,6 +257,7 @@ namespace AsteroidsGame
             Bomb.Life = 3;
             Rocket.IsFired = false;
             RocketPB.Hide();
+            ScoreCounter();
 
             AsteroidPositionTimer.Start();
             LaserPB.Hide();
@@ -324,8 +317,6 @@ namespace AsteroidsGame
                 isGiftVisible = false;
                 GiftPositionTimer.Stop();
                 RedGift.Hide();
-                int count = Rocket.Count++;
-                RocketCount(count - 1);
             }
             else
             {
@@ -338,12 +329,14 @@ namespace AsteroidsGame
         private void PauseGame_Click(object sender, EventArgs e)
         {
             AsteroidPositionTimer.Stop();
+            GiftPositionTimer.Stop();
         }
 
         private void StartGame_Click(object sender, EventArgs e)
         {
             StartGame.IsStarted = true;
             AsteroidPositionTimer.Start();
+            GiftPositionTimer.Start();
         }
 
         private void Restart_Click(object sender, EventArgs e)
@@ -360,8 +353,10 @@ namespace AsteroidsGame
             RocketPB.Hide();
             LaserPB.Hide();
             RedGift.Hide();
-            Rocket.Count = 11;
-            score = 0;
+            Rocket.Count = 10;
+            RocketCount(Rocket.Count);
+            score = -1;
+            ScoreCounter();
         }
 
         private void QuitButton_Click(object sender, EventArgs e)
