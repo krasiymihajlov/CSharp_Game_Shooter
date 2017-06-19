@@ -303,7 +303,7 @@ namespace AsteroidsGame
             Rocket.IsFired = false;
             RocketPB.Hide();
             RedGift.Hide();
-            score += 9;
+            score += 4;
             ScoreCounter();
             Rocket.Count++;
             RocketCount(Rocket.Count);

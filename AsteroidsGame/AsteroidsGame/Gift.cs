@@ -8,5 +8,7 @@ public static class Gift
 
     public static bool IsRocketComming { get; set; }
 
+    public static bool IsExploding { get; set; }
+
     public static int ContentShowTyme { get; set; }
 }
