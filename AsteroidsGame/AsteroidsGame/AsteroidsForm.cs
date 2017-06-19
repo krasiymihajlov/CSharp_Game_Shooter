@@ -41,8 +41,6 @@ namespace AsteroidsGame
             Bomb.Y = -30;
             Bomb.Life = BombLife;
             Rocket.Count = 10;
-            Gift.X = -30;
-            Gift.Y = 100;
         }
 
         private void ScoreCounter()
@@ -168,7 +166,7 @@ namespace AsteroidsGame
             //Gift logic -----------------------------------------
             if (!isGiftVisible)
             {
-                int showGiftRandom = rnd.Next(0, 2);
+                int showGiftRandom = rnd.Next(0, 200);
 
                 if (showGiftRandom == 1)
                 {
@@ -179,7 +177,7 @@ namespace AsteroidsGame
                     };
 
                     Gift.X = rnd.Next(BombPB.Width + 10, this.Width - BombPB.Width - 10);
-                    
+
                     if (Gift.X >= bombXLocation[0] && Gift.X <= bombXLocation[1])
                     {
                         Gift.X = rnd.Next(BombPB.Width + 10, this.Width - BombPB.Width - 10);
@@ -288,10 +286,6 @@ namespace AsteroidsGame
             LaserPB.Hide();
         }
 
-        private void QuitButton_Click(object sender, EventArgs e)
-        {
-            QuitGame.ExitGame();
-        }
 
         private void pictureBox4_Click(object sender, MouseEventArgs e)
         {
@@ -322,34 +316,6 @@ namespace AsteroidsGame
             //    DestroyGift();
             //}
         }
-
-        private void PauseGame_Click(object sender, EventArgs e)
-        {
-            AsteroidPositionTimer.Stop();
-        }
-
-        private void StartGame_Click(object sender, EventArgs e)
-        {
-            StartGame.IsStarted = true;
-            AsteroidPositionTimer.Start();
-        }
-
-        private void Restart_Click(object sender, EventArgs e)
-        {
-            AsteroidPositionTimer.Stop();
-            StartGame.IsStarted = false;
-            Destroyed = true;
-            Bomb.IsExploding = false;
-            Gift.IsExploding = false;
-            Rocket.IsFired = false;
-            Bomb.Life = 3;
-            BombPB.Hide();
-            RocketPB.Hide();
-            LaserPB.Hide();
-            RedGift.Hide();
-            AsteroidPositionTimer.Start();
-        }
-
         private void GiftPositionTimer_Tick(object sender, EventArgs e)
         {
             if (DestroyedGift || Gift.Y >= 700)
@@ -366,6 +332,41 @@ namespace AsteroidsGame
                 Gift.Y += 5;
                 RedGift.Location = new Point(Gift.X, Gift.Y);
             }
+        }
+
+
+        private void PauseGame_Click(object sender, EventArgs e)
+        {
+            AsteroidPositionTimer.Stop();
+        }
+
+        private void StartGame_Click(object sender, EventArgs e)
+        {
+            StartGame.IsStarted = true;
+            AsteroidPositionTimer.Start();
+        }
+
+        private void Restart_Click(object sender, EventArgs e)
+        {
+            AsteroidPositionTimer.Stop();
+            GiftPositionTimer.Stop();
+            StartGame.IsStarted = false;
+            Destroyed = true;
+            Bomb.IsExploding = false;
+            Gift.IsExploding = false;
+            Rocket.IsFired = false;
+            Bomb.Life = 3;
+            BombPB.Hide();
+            RocketPB.Hide();
+            LaserPB.Hide();
+            RedGift.Hide();
+            Rocket.Count = 11;
+            score = 0;
+        }
+
+        private void QuitButton_Click(object sender, EventArgs e)
+        {
+            QuitGame.ExitGame();
         }
     }
 }
