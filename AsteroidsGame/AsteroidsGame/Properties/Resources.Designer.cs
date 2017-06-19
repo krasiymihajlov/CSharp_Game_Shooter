@@ -239,6 +239,16 @@ namespace AsteroidsGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap RocketGift {
+            get {
+                object obj = ResourceManager.GetObject("RocketGift", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Sight {
             get {
                 object obj = ResourceManager.GetObject("Sight", resourceCulture);

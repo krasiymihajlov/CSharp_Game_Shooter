@@ -50,6 +50,7 @@
             this.Start = new System.Windows.Forms.PictureBox();
             this.GiftPositionTimer = new System.Windows.Forms.Timer(this.components);
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.RocketGift = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.BombPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplodingAsteroid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NukeCloud)).BeginInit();
@@ -64,6 +65,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Pause)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Start)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RocketGift)).BeginInit();
             this.SuspendLayout();
             // 
             // mouseXposer
@@ -264,12 +266,24 @@
             this.pictureBox3.TabIndex = 16;
             this.pictureBox3.TabStop = false;
             // 
+            // RocketGift
+            // 
+            this.RocketGift.BackColor = System.Drawing.Color.Transparent;
+            this.RocketGift.Image = global::AsteroidsGame.Properties.Resources.RocketGift;
+            this.RocketGift.Location = new System.Drawing.Point(89, 349);
+            this.RocketGift.Name = "RocketGift";
+            this.RocketGift.Size = new System.Drawing.Size(23, 52);
+            this.RocketGift.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.RocketGift.TabIndex = 17;
+            this.RocketGift.TabStop = false;
+            // 
             // AsteroidsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::AsteroidsGame.Properties.Resources.Back;
             this.ClientSize = new System.Drawing.Size(684, 661);
+            this.Controls.Add(this.RocketGift);
             this.Controls.Add(this.QuitButton);
             this.Controls.Add(this.Restart);
             this.Controls.Add(this.Pause);
@@ -308,6 +322,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Pause)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Start)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RocketGift)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -335,6 +350,7 @@
         private System.Windows.Forms.PictureBox Pause;
         private System.Windows.Forms.PictureBox Start;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox RocketGift;
     }
 }
 
