@@ -229,6 +229,7 @@
             this.RedGift.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.RedGift.TabIndex = 12;
             this.RedGift.TabStop = false;
+            this.RedGift.MouseClick += new System.Windows.Forms.MouseEventHandler(this.RedGift_MouseClick);
             // 
             // pictureBox4
             // 
