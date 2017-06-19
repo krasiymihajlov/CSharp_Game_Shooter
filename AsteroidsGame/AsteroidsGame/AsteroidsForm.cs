@@ -355,6 +355,10 @@ namespace AsteroidsGame
         {
             QuitGame.ExitGame();
         }
-       
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

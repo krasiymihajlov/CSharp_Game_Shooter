@@ -186,12 +186,12 @@
             // 
             // QuitButton
             // 
-            this.QuitButton.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.QuitButton.Image = ((System.Drawing.Image)(resources.GetObject("QuitButton.Image")));
+            this.QuitButton.BackColor = System.Drawing.Color.Black;
+            this.QuitButton.Image = global::AsteroidsGame.Properties.Resources.quit;
             this.QuitButton.InitialImage = ((System.Drawing.Image)(resources.GetObject("QuitButton.InitialImage")));
-            this.QuitButton.Location = new System.Drawing.Point(609, 602);
+            this.QuitButton.Location = new System.Drawing.Point(620, 616);
             this.QuitButton.Name = "QuitButton";
-            this.QuitButton.Size = new System.Drawing.Size(77, 56);
+            this.QuitButton.Size = new System.Drawing.Size(66, 53);
             this.QuitButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.QuitButton.TabIndex = 10;
             this.QuitButton.TabStop = false;
@@ -199,10 +199,11 @@
             // 
             // Restart
             // 
-            this.Restart.Image = global::AsteroidsGame.Properties.Resources.restart_button_slider1;
-            this.Restart.Location = new System.Drawing.Point(503, 587);
+            this.Restart.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Restart.Image = global::AsteroidsGame.Properties.Resources.restart;
+            this.Restart.Location = new System.Drawing.Point(537, 602);
             this.Restart.Name = "Restart";
-            this.Restart.Size = new System.Drawing.Size(100, 71);
+            this.Restart.Size = new System.Drawing.Size(46, 47);
             this.Restart.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Restart.TabIndex = 11;
             this.Restart.TabStop = false;
@@ -230,10 +231,11 @@
             // 
             // Pause
             // 
+            this.Pause.BackColor = System.Drawing.Color.Black;
             this.Pause.Image = global::AsteroidsGame.Properties.Resources.pause;
-            this.Pause.Location = new System.Drawing.Point(87, 572);
+            this.Pause.Location = new System.Drawing.Point(103, 602);
             this.Pause.Name = "Pause";
-            this.Pause.Size = new System.Drawing.Size(107, 96);
+            this.Pause.Size = new System.Drawing.Size(51, 47);
             this.Pause.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pause.TabIndex = 14;
             this.Pause.TabStop = false;
@@ -241,10 +243,11 @@
             // 
             // Start
             // 
+            this.Start.BackColor = System.Drawing.Color.Black;
             this.Start.Image = global::AsteroidsGame.Properties.Resources.start;
-            this.Start.Location = new System.Drawing.Point(-12, 588);
+            this.Start.Location = new System.Drawing.Point(0, 616);
             this.Start.Name = "Start";
-            this.Start.Size = new System.Drawing.Size(115, 80);
+            this.Start.Size = new System.Drawing.Size(66, 53);
             this.Start.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Start.TabIndex = 15;
             this.Start.TabStop = false;
@@ -259,12 +262,13 @@
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Image = global::AsteroidsGame.Properties.Resources.AirForce;
-            this.pictureBox3.Location = new System.Drawing.Point(0, 562);
+            this.pictureBox3.Location = new System.Drawing.Point(0, 563);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(686, 106);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 16;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // RocketGift
             // 
