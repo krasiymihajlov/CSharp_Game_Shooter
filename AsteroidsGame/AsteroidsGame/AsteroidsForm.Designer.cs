@@ -49,6 +49,7 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.Pause = new System.Windows.Forms.PictureBox();
             this.Start = new System.Windows.Forms.PictureBox();
+            this.GiftPositionTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.BombPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplodingAsteroid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NukeCloud)).BeginInit();
@@ -87,7 +88,7 @@
             // AsteroidPositionTimer
             // 
             this.AsteroidPositionTimer.Enabled = true;
-            this.AsteroidPositionTimer.Interval = 1;
+            this.AsteroidPositionTimer.Interval = 10;
             this.AsteroidPositionTimer.Tick += new System.EventHandler(this.AsteroidPositionTimer_Tick);
             // 
             // ExplodingAsteroid
@@ -106,7 +107,7 @@
             // 
             this.NukeCloud.BackColor = System.Drawing.Color.Transparent;
             this.NukeCloud.Image = global::AsteroidsGame.Properties.Resources.nukecloud;
-            this.NukeCloud.Location = new System.Drawing.Point(291, 450);
+            this.NukeCloud.Location = new System.Drawing.Point(281, 408);
             this.NukeCloud.MaximumSize = new System.Drawing.Size(75, 75);
             this.NukeCloud.Name = "NukeCloud";
             this.NukeCloud.Size = new System.Drawing.Size(75, 75);
@@ -227,6 +228,11 @@
             this.RedGift.TabIndex = 12;
             this.RedGift.TabStop = false;
             // 
+            // GiftPositionTimer
+            // 
+            this.GiftPositionTimer.Interval = 10;
+            this.GiftPositionTimer.Tick += new System.EventHandler(this.GiftPositionTimer_Tick);
+            // 
             // pictureBox4
             // 
             this.pictureBox4.Location = new System.Drawing.Point(-23, -46);
@@ -323,6 +329,7 @@
         private System.Windows.Forms.PictureBox QuitButton;
         private System.Windows.Forms.PictureBox Restart;
         private System.Windows.Forms.PictureBox RedGift;
+        private System.Windows.Forms.Timer GiftPositionTimer;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox Pause;
         private System.Windows.Forms.PictureBox Start;

@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Media;
 using System.Windows.Forms;
-using AsteroidsGame.Sounds;
-using System.Windows.Forms.VisualStyles;
 using AsteroidsGame.GameOption;
 using AsteroidsGame.Properties;
+using AsteroidsGame.Sounds;
 
 namespace AsteroidsGame
 {
@@ -25,7 +22,7 @@ namespace AsteroidsGame
         private static int GiftCounter = 0;
         private static int DestroyedGiftCounter = 0;
         private static bool NukeCity = false;
-
+        private static bool isGiftVisible = false;
 
         public AsteroidsForm()
         {
@@ -35,11 +32,15 @@ namespace AsteroidsGame
             ExplodingAsteroid.Hide();
             NukeCloud.Hide();
             RocketPB.Hide();
+            RedGift.Hide();
+            LaserPB.Hide();
+
+            BombPB.BringToFront();
+
             Bomb.X = 200;
             Bomb.Y = -30;
             Bomb.Life = BombLife;
             Rocket.Count = 10;
-            LaserPB.Hide();
             Gift.X = -30;
             Gift.Y = 100;
         }
@@ -163,36 +164,34 @@ namespace AsteroidsGame
                     NukeCloudCounter++;
                 }
             }
+
             //Gift logic -----------------------------------------
-            Gift.X += 3;
-            RedGift.Location = new Point(Gift.X, Gift.Y);
-
-            if (DestroyedGiftCounter >= 10 && DestroyedGift)
+            if (!isGiftVisible)
             {
-                //RedGift.Hide();
-                DestroyedGiftCounter = 0;
+                int showGiftRandom = rnd.Next(0, 2);
 
-                Gift.X = -30;
-                Gift.Y = 100;
-                DestroyedGift = false;
-
-            }
-            else if (DestroyedGift)
-            {
-                int count = Rocket.Count++;
-                RocketCount(count - 1);
-            }
-            else if (Gift.X >= 682)
-            {
-                if (GiftCounter >= 200)
+                if (showGiftRandom == 1)
                 {
-                    Gift.X = -30;
+                    int[] bombXLocation =
+                    {
+                        Bomb.X - BombPB.Width,
+                        Bomb.X + BombPB.Width
+                    };
+
+                    Gift.X = rnd.Next(BombPB.Width + 10, this.Width - BombPB.Width - 10);
+                    
+                    if (Gift.X >= bombXLocation[0] && Gift.X <= bombXLocation[1])
+                    {
+                        Gift.X = rnd.Next(BombPB.Width + 10, this.Width - BombPB.Width - 10);
+                    }
+
+                    Gift.Y = -30;
                     RedGift.Location = new Point(Gift.X, Gift.Y);
-                    GiftCounter = 0;
-                }
-                else
-                {
-                    GiftCounter++;
+
+                    isGiftVisible = true;
+
+                    RedGift.Show();
+                    GiftPositionTimer.Start();
                 }
             }
         }
@@ -241,7 +240,6 @@ namespace AsteroidsGame
             }
             else // Laser
             {
-
                 PlaySound.PlayMouseSound(e.Button);
                 Bomb.Life--;
                 if (Bomb.Life == 0)
@@ -273,6 +271,7 @@ namespace AsteroidsGame
             AsteroidPositionTimer.Start();
             LaserPB.Hide();
         }
+
         private void DestroyGift()
         {
             RedGift.Hide();
@@ -349,6 +348,24 @@ namespace AsteroidsGame
             LaserPB.Hide();
             RedGift.Hide();
             AsteroidPositionTimer.Start();
+        }
+
+        private void GiftPositionTimer_Tick(object sender, EventArgs e)
+        {
+            if (DestroyedGift || Gift.Y >= 700)
+            {
+                DestroyedGift = false;
+                isGiftVisible = false;
+                GiftPositionTimer.Stop();
+                RedGift.Hide();
+                int count = Rocket.Count++;
+                RocketCount(count - 1);
+            }
+            else
+            {
+                Gift.Y += 5;
+                RedGift.Location = new Point(Gift.X, Gift.Y);
+            }
         }
     }
 }
