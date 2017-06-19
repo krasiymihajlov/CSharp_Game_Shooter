@@ -238,7 +238,7 @@
             this.Pause.Image = global::AsteroidsGame.Properties.Resources.pause;
             this.Pause.Location = new System.Drawing.Point(103, 602);
             this.Pause.Name = "Pause";
-            this.Pause.Size = new System.Drawing.Size(51, 47);
+            this.Pause.Size = new System.Drawing.Size(45, 43);
             this.Pause.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pause.TabIndex = 14;
             this.Pause.TabStop = false;
