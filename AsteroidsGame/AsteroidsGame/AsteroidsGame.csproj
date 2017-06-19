@@ -136,9 +136,6 @@
     <None Include="Resources\icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\quit.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\redGift.png" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +152,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\RocketGift.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\quit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\restart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\start.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -31,6 +31,7 @@ namespace AsteroidsGame
             RedGift.Hide();
             LaserPB.Hide();
             RocketGift.Hide();
+            DashboardGiftLabel.Hide();
 
             BombPB.BringToFront();
 
@@ -43,7 +44,7 @@ namespace AsteroidsGame
         private void ScoreCounter()
         {
             score++;
-            ScoreCount.Text = "Score = " + score;
+            ScoreCount.Text = "Score: " + score;
         }
 
         public void RocketCount(int count)
@@ -76,6 +77,7 @@ namespace AsteroidsGame
                 if (Gift.ContentShowTyme == 0)
                 {
                     RocketGift.Hide();
+                    DashboardGiftLabel.Hide();
                 }
             }
             // <----------------------------------<<
@@ -154,7 +156,7 @@ namespace AsteroidsGame
             //Gift logic -----------------------------------------
             if (!isGiftVisible)
             {
-                int showGiftRandom = rnd.Next(0, 20);
+                int showGiftRandom = rnd.Next(0, 50);
 
                 if (showGiftRandom == 1)
                 {
@@ -313,6 +315,7 @@ namespace AsteroidsGame
             RocketGift.Left = RedGift.Left + RedGift.Width / 2 - RocketGift.Width / 2;
             RocketGift.Top = RedGift.Top + RedGift.Height / 2;
             RocketGift.Show();
+            DashboardGiftLabel.Show();
             Gift.ContentShowTyme = GiftContentShowTime;
 
             LaserPB.Hide();
@@ -355,6 +358,10 @@ namespace AsteroidsGame
         {
             QuitGame.ExitGame();
         }
-       
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
