@@ -15,10 +15,7 @@ namespace AsteroidsGame
         private static int score = 0;
         private static int DestroyedImageCounter = 0;
         private static bool Destroyed = false;
-        private static bool DestroyedGift = false;
         private static int NukeCloudCounter = 0;
-        private static int GiftCounter = 0;
-        private static int DestroyedGiftCounter = 0;
         private static bool NukeCity = false;
         private static bool isGiftVisible = false;
 
@@ -72,17 +69,12 @@ namespace AsteroidsGame
             if (Rocket.IsFired)
             {
                 Rocket.Move(RocketPB, BombPB);
-                //GiftShow.Move(RocketPB,RedGift);
             }
             // <----------------------------------<<
 
             if (Bomb.IsExploding)
             {
                 DestroyBomb();
-            }
-            if (Gift.IsExploding)
-            {
-                RedGift.Hide();
             }
 
             // Laser >>---------------------------->
@@ -175,6 +167,20 @@ namespace AsteroidsGame
             }
         }
 
+        private void GiftPositionTimer_Tick(object sender, EventArgs e)
+        {
+            if (Gift.Y >= 700)
+            {
+                isGiftVisible = false;
+                GiftPositionTimer.Stop();
+                RedGift.Hide();
+            }
+            else
+            {
+                Gift.Y += 5;
+                RedGift.Location = new Point(Gift.X, Gift.Y);
+            }
+        }
 
         // Shot Outside the target
         private void AsteroidsForm_MouseClick(object sender, MouseEventArgs e)
@@ -222,6 +228,37 @@ namespace AsteroidsGame
             }
         }
 
+        private void RedGift_MouseClick(object sender, MouseEventArgs e)
+        {
+            //this is redGift
+            if (e.Button == MouseButtons.Right) // Rocket
+            {
+                if (Rocket.Count > 0 && !Rocket.IsFired)
+                {
+                    RedGift.Hide();
+                    int count = Rocket.Count--;
+                    RocketCount(count - 1);
+                    ScoreCounter();         // label for rocket counting
+                    PlaySound.PlayMouseSound(e.Button);
+                    Gift.IsExploding = true;
+                    Rocket.Fire(RocketPB, Height, RedGift.Left + RedGift.Width / 4);
+                }
+            }
+
+            else // Laser
+            {
+                RedGift.Hide();
+                PlaySound.PlayMouseSound(e.Button);
+                Laser.LightUp(LaserPB, e.X, RedGift, true);
+                Gift.IsExploding = true;
+            }
+
+            if (Gift.IsExploding)
+            {
+                DestroyGift();
+            }
+        }
+
         private void DestroyBomb()
         {
             BombPB.Hide();
@@ -247,31 +284,18 @@ namespace AsteroidsGame
             //ExplodingAsteroid.Top = RedGift.Top - 20;
             //ExplodingAsteroid.Show();
             PlaySound.PlayExplodeSound();
-            DestroyedGift = true;
             Gift.IsExploding = false;
             Rocket.IsFired = false;
             RocketPB.Hide();
+            RedGift.Hide();
+            score += 9;
+            ScoreCounter();
+            Rocket.Count++;
+            RocketCount(Rocket.Count);
 
-            AsteroidPositionTimer.Start();
+            GiftPositionTimer.Start();
             LaserPB.Hide();
         }
-
-        private void GiftPositionTimer_Tick(object sender, EventArgs e)
-        {
-            if (DestroyedGift || Gift.Y >= 700)
-            {
-                DestroyedGift = false;
-                isGiftVisible = false;
-                GiftPositionTimer.Stop();
-                RedGift.Hide();
-            }
-            else
-            {
-                Gift.Y += 5;
-                RedGift.Location = new Point(Gift.X, Gift.Y);
-            }
-        }
-
 
         private void PauseGame_Click(object sender, EventArgs e)
         {
@@ -310,36 +334,6 @@ namespace AsteroidsGame
         {
             QuitGame.ExitGame();
         }
-
-        private void RedGift_MouseClick(object sender, MouseEventArgs e)
-        {
-            //this is redGift
-            if (e.Button == MouseButtons.Right) // Rocket
-            {
-                if (Rocket.Count > 0 && !Rocket.IsFired)
-                {
-                    RedGift.Hide();
-                    int count = Rocket.Count--;
-                    RocketCount(count + 1);
-                    ScoreCounter();         // label for rocket counting
-                    PlaySound.PlayMouseSound(e.Button);
-                    Rocket.Fire(RocketPB, Height, BombPB.Left + BombPB.Width / 4);
-                }
-            }
-            else // Laser
-            {
-                RedGift.Hide();
-
-                PlaySound.PlayMouseSound(e.Button);
-                RocketCount(Rocket.Count + 1);
-
-                Laser.LightUp(LaserPB, e.X, BombPB, true);
-            }
-
-            if (Gift.IsExploding)
-            {
-                DestroyGift();
-            }
-        }
+       
     }
 }
