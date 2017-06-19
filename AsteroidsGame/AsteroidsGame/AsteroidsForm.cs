@@ -154,7 +154,7 @@ namespace AsteroidsGame
             //Gift logic -----------------------------------------
             if (!isGiftVisible)
             {
-                int showGiftRandom = rnd.Next(0, 20);
+                int showGiftRandom = rnd.Next(0, 50);
 
                 if (showGiftRandom == 1)
                 {
@@ -303,7 +303,7 @@ namespace AsteroidsGame
             Rocket.IsFired = false;
             RocketPB.Hide();
             RedGift.Hide();
-            score += 9;
+            score += 4;
             ScoreCounter();
             Rocket.Count++;
             RocketCount(Rocket.Count);
