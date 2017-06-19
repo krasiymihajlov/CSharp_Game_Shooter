@@ -12,9 +12,7 @@ namespace AsteroidsGame
         private const int BombLife = 3;
 
         private Random rnd = new Random();
-        private static int totalShots = 0;
         private static int score = 0;
-        private static int missingShots = 0;
         private static int DestroyedImageCounter = 0;
         private static bool Destroyed = false;
         private static bool DestroyedGift = false;
@@ -28,7 +26,6 @@ namespace AsteroidsGame
         {
             InitializeComponent();
 
-            label1.Hide();
             ExplodingAsteroid.Hide();
             NukeCloud.Hide();
             RocketPB.Hide();
@@ -47,23 +44,6 @@ namespace AsteroidsGame
         {
             score++;
             ScoreCount.Text = "Score = " + score;
-
-            //totalShots++;
-            //label1.Text = "Total Shots = " + totalShots;
-        }
-
-        public void MissShot()
-        {
-            missingShots++;
-            totalShots++;
-            label1.Text = "Total Shots = " + totalShots;
-
-            //if (missingShots >= 20)
-            //{
-            //    Rockets.Hide();
-            //    label1.Hide();
-            //    ScoreCount.Hide();
-            //}
         }
 
         public void RocketCount(int count)
@@ -83,7 +63,6 @@ namespace AsteroidsGame
 
         private void AsteroidPositionTimer_Tick(object sender, EventArgs e)
         {
-
             if (!StartGame.GameIsStarted())
             {
                 AsteroidPositionTimer.Stop();
@@ -105,6 +84,7 @@ namespace AsteroidsGame
             {
                 RedGift.Hide();
             }
+
             // Laser >>---------------------------->
             if (Laser.TimeCounter > 0)
             {
@@ -205,7 +185,6 @@ namespace AsteroidsGame
                 {
                     int count = Rocket.Count--;
                     RocketCount(count - 1);
-                   // ScoreCounter();                    // label for rocket counting
                     PlaySound.PlayMouseSound(e.Button);
                     Rocket.Fire(RocketPB, Height, e.X);                    
                 }
@@ -215,8 +194,6 @@ namespace AsteroidsGame
                 PlaySound.PlayMouseSound(e.Button);
                 Laser.LightUp(LaserPB, e.X, BombPB, false);
             }
-
-            MissShot();
         }
 
         // Shot Inside the target

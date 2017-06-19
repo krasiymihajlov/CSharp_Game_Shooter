@@ -54,17 +54,11 @@
     </Compile>
     <Compile Include="Bomb.cs" />
     <Compile Include="GameOption\QuitGame.cs" />
-    <Compile Include="GameOption\ResetGame.cs" />
     <Compile Include="GameOption\StartGame.cs" />
     <Compile Include="Gift.cs" />
     <Compile Include="Gifts\GiftShow.cs" />
     <Compile Include="Laser.cs" />
     <Compile Include="Rocket.cs" />
-    <Compile Include="Scores\MissingShot.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Scores\Score.cs" />
-    <Compile Include="Scores\TotalShots.cs" />
     <Compile Include="Sounds\PlaySound.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

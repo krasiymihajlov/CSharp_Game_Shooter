@@ -38,7 +38,6 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.ScoreCount = new System.Windows.Forms.Label();
             this.Rockets = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.RocketPB = new System.Windows.Forms.PictureBox();
             this.LaserPB = new System.Windows.Forms.PictureBox();
@@ -128,7 +127,7 @@
             this.ScoreCount.AutoSize = true;
             this.ScoreCount.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ScoreCount.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ScoreCount.Location = new System.Drawing.Point(337, 509);
+            this.ScoreCount.Location = new System.Drawing.Point(290, 602);
             this.ScoreCount.Name = "ScoreCount";
             this.ScoreCount.Size = new System.Drawing.Size(101, 29);
             this.ScoreCount.TabIndex = 5;
@@ -139,23 +138,11 @@
             this.Rockets.AutoSize = true;
             this.Rockets.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.Rockets.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Rockets.Location = new System.Drawing.Point(313, 470);
+            this.Rockets.Location = new System.Drawing.Point(290, 572);
             this.Rockets.Name = "Rockets";
             this.Rockets.Size = new System.Drawing.Size(145, 29);
             this.Rockets.TabIndex = 4;
             this.Rockets.Text = "Rockets: 10";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.label1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.label1.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(10, 521);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(184, 29);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Total Shots = 0";
             // 
             // pictureBox1
             // 
@@ -200,9 +187,9 @@
             this.QuitButton.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.QuitButton.Image = ((System.Drawing.Image)(resources.GetObject("QuitButton.Image")));
             this.QuitButton.InitialImage = ((System.Drawing.Image)(resources.GetObject("QuitButton.InitialImage")));
-            this.QuitButton.Location = new System.Drawing.Point(585, 489);
+            this.QuitButton.Location = new System.Drawing.Point(609, 602);
             this.QuitButton.Name = "QuitButton";
-            this.QuitButton.Size = new System.Drawing.Size(96, 61);
+            this.QuitButton.Size = new System.Drawing.Size(77, 56);
             this.QuitButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.QuitButton.TabIndex = 10;
             this.QuitButton.TabStop = false;
@@ -211,7 +198,7 @@
             // Restart
             // 
             this.Restart.Image = global::AsteroidsGame.Properties.Resources.restart_button_slider1;
-            this.Restart.Location = new System.Drawing.Point(585, 408);
+            this.Restart.Location = new System.Drawing.Point(503, 587);
             this.Restart.Name = "Restart";
             this.Restart.Size = new System.Drawing.Size(100, 71);
             this.Restart.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -242,7 +229,7 @@
             // Pause
             // 
             this.Pause.Image = global::AsteroidsGame.Properties.Resources.pause;
-            this.Pause.Location = new System.Drawing.Point(472, 366);
+            this.Pause.Location = new System.Drawing.Point(87, 572);
             this.Pause.Name = "Pause";
             this.Pause.Size = new System.Drawing.Size(107, 96);
             this.Pause.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -253,7 +240,7 @@
             // Start
             // 
             this.Start.Image = global::AsteroidsGame.Properties.Resources.start;
-            this.Start.Location = new System.Drawing.Point(464, 470);
+            this.Start.Location = new System.Drawing.Point(-12, 588);
             this.Start.Name = "Start";
             this.Start.Size = new System.Drawing.Size(115, 80);
             this.Start.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -270,10 +257,10 @@
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Image = global::AsteroidsGame.Properties.Resources.AirForce;
-            this.pictureBox3.Location = new System.Drawing.Point(-8, 556);
+            this.pictureBox3.Location = new System.Drawing.Point(0, 562);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(700, 106);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox3.Size = new System.Drawing.Size(686, 106);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 16;
             this.pictureBox3.TabStop = false;
             // 
@@ -283,19 +270,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::AsteroidsGame.Properties.Resources.Back;
             this.ClientSize = new System.Drawing.Size(684, 661);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.Start);
+            this.Controls.Add(this.QuitButton);
+            this.Controls.Add(this.Restart);
             this.Controls.Add(this.Pause);
+            this.Controls.Add(this.Start);
+            this.Controls.Add(this.ScoreCount);
+            this.Controls.Add(this.Rockets);
+            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.RedGift);
-            this.Controls.Add(this.Restart);
-            this.Controls.Add(this.QuitButton);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.LaserPB);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.ScoreCount);
-            this.Controls.Add(this.Rockets);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.NukeCloud);
             this.Controls.Add(this.ExplodingAsteroid);
             this.Controls.Add(this.BombPB);
@@ -335,7 +321,6 @@
         private System.Windows.Forms.PictureBox ExplodingAsteroid;
         private System.Windows.Forms.Label ScoreCount;
         private System.Windows.Forms.Label Rockets;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.PictureBox NukeCloud;
