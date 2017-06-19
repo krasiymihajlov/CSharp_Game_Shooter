@@ -134,7 +134,7 @@ namespace AsteroidsGame
             {
                 DestroyedImageCounter++;
             }
-            else if (Bomb.Y >= rnd.Next(500, 600) || NukeCity)
+            else if (Bomb.Y >= rnd.Next(380, 470) || NukeCity)
             {
                 if (NukeCloudCounter == 0)
                 {
