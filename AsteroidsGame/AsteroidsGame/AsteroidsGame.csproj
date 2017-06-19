@@ -55,6 +55,7 @@
     <Compile Include="Bomb.cs" />
     <Compile Include="GameOption\QuitGame.cs" />
     <Compile Include="GameOption\ResetGame.cs" />
+    <Compile Include="GameOption\StartGame.cs" />
     <Compile Include="Gift.cs" />
     <Compile Include="Gifts\GiftShow.cs" />
     <Compile Include="Laser.cs" />
@@ -146,6 +147,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\redGift.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\start.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\restart-button_slider1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pause.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

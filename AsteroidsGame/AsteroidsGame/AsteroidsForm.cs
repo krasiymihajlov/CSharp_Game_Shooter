@@ -42,7 +42,6 @@ namespace AsteroidsGame
             LaserPB.Hide();
             Gift.X = -30;
             Gift.Y = 100;
-
         }
 
         private void ScoreCounter()
@@ -85,6 +84,11 @@ namespace AsteroidsGame
 
         private void AsteroidPositionTimer_Tick(object sender, EventArgs e)
         {
+            if (!StartGame.GameIsStarted())
+            {
+                AsteroidPositionTimer.Stop();
+            }
+
             // Rocket movement >>------------------>
             if (Rocket.IsFired)
             {
@@ -192,6 +196,7 @@ namespace AsteroidsGame
                 }
             }
         }
+
 
         // Shot Outside the target
         private void AsteroidsForm_MouseClick(object sender, MouseEventArgs e)
@@ -317,6 +322,33 @@ namespace AsteroidsGame
             //{
             //    DestroyGift();
             //}
+        }
+
+        private void PauseGame_Click(object sender, EventArgs e)
+        {
+            AsteroidPositionTimer.Stop();
+        }
+
+        private void StartGame_Click(object sender, EventArgs e)
+        {
+            StartGame.IsStarted = true;
+            AsteroidPositionTimer.Start();
+        }
+
+        private void Restart_Click(object sender, EventArgs e)
+        {
+            AsteroidPositionTimer.Stop();
+            StartGame.IsStarted = false;
+            Destroyed = true;
+            Bomb.IsExploding = false;
+            Gift.IsExploding = false;
+            Rocket.IsFired = false;
+            Bomb.Life = 3;
+            BombPB.Hide();
+            RocketPB.Hide();
+            LaserPB.Hide();
+            RedGift.Hide();
+            AsteroidPositionTimer.Start();
         }
     }
 }

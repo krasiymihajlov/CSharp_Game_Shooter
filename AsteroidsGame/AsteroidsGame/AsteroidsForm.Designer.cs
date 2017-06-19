@@ -44,8 +44,11 @@
             this.LaserPB = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.QuitButton = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.Restart = new System.Windows.Forms.PictureBox();
             this.RedGift = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.Pause = new System.Windows.Forms.PictureBox();
+            this.Start = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.BombPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplodingAsteroid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NukeCloud)).BeginInit();
@@ -54,8 +57,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.LaserPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.QuitButton)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Restart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RedGift)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pause)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Start)).BeginInit();
             this.SuspendLayout();
             // 
             // mouseXposer
@@ -107,7 +113,6 @@
             this.NukeCloud.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.NukeCloud.TabIndex = 3;
             this.NukeCloud.TabStop = false;
-         
             // 
             // imageList1
             // 
@@ -200,13 +205,16 @@
             this.QuitButton.TabStop = false;
             this.QuitButton.Click += new System.EventHandler(this.QuitButton_Click);
             // 
-            // pictureBox3
+            // Restart
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox3.TabIndex = 11;
-            this.pictureBox3.TabStop = false;
+            this.Restart.Image = global::AsteroidsGame.Properties.Resources.restart_button_slider1;
+            this.Restart.Location = new System.Drawing.Point(522, 454);
+            this.Restart.Name = "Restart";
+            this.Restart.Size = new System.Drawing.Size(100, 71);
+            this.Restart.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Restart.TabIndex = 11;
+            this.Restart.TabStop = false;
+            this.Restart.Click += new System.EventHandler(this.Restart_Click);
             // 
             // RedGift
             // 
@@ -219,14 +227,47 @@
             this.RedGift.TabIndex = 12;
             this.RedGift.TabStop = false;
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Location = new System.Drawing.Point(-23, -46);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox4.TabIndex = 13;
+            this.pictureBox4.TabStop = false;
+            // 
+            // Pause
+            // 
+            this.Pause.Image = global::AsteroidsGame.Properties.Resources.pause;
+            this.Pause.Location = new System.Drawing.Point(392, 366);
+            this.Pause.Name = "Pause";
+            this.Pause.Size = new System.Drawing.Size(107, 96);
+            this.Pause.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Pause.TabIndex = 14;
+            this.Pause.TabStop = false;
+            this.Pause.Click += new System.EventHandler(this.PauseGame_Click);
+            // 
+            // Start
+            // 
+            this.Start.Image = global::AsteroidsGame.Properties.Resources.start;
+            this.Start.Location = new System.Drawing.Point(384, 468);
+            this.Start.Name = "Start";
+            this.Start.Size = new System.Drawing.Size(115, 80);
+            this.Start.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Start.TabIndex = 15;
+            this.Start.TabStop = false;
+            this.Start.Click += new System.EventHandler(this.StartGame_Click);
+            // 
             // AsteroidsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::AsteroidsGame.Properties.Resources.Back;
             this.ClientSize = new System.Drawing.Size(684, 661);
+            this.Controls.Add(this.Start);
+            this.Controls.Add(this.Pause);
+            this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.RedGift);
-            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.Restart);
             this.Controls.Add(this.QuitButton);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.LaserPB);
@@ -254,8 +295,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.LaserPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.QuitButton)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Restart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RedGift)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pause)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Start)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,8 +321,11 @@
         private System.Windows.Forms.PictureBox LaserPB;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox QuitButton;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox Restart;
         private System.Windows.Forms.PictureBox RedGift;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox Pause;
+        private System.Windows.Forms.PictureBox Start;
     }
 }
 

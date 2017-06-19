@@ -170,6 +170,16 @@ namespace AsteroidsGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pause {
+            get {
+                object obj = ResourceManager.GetObject("pause", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap quit {
             get {
                 object obj = ResourceManager.GetObject("quit", resourceCulture);
@@ -183,6 +193,16 @@ namespace AsteroidsGame.Properties {
         internal static System.Drawing.Bitmap redGift {
             get {
                 object obj = ResourceManager.GetObject("redGift", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap restart_button_slider1 {
+            get {
+                object obj = ResourceManager.GetObject("restart_button_slider1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -212,6 +232,16 @@ namespace AsteroidsGame.Properties {
         internal static System.Drawing.Bitmap Sight {
             get {
                 object obj = ResourceManager.GetObject("Sight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap start {
+            get {
+                object obj = ResourceManager.GetObject("start", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
