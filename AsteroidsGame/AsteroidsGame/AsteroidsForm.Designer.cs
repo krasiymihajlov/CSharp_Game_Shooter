@@ -51,6 +51,7 @@
             this.GiftPositionTimer = new System.Windows.Forms.Timer(this.components);
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.RocketGift = new System.Windows.Forms.PictureBox();
+            this.DashboardGiftLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.BombPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplodingAsteroid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NukeCloud)).BeginInit();
@@ -279,12 +280,25 @@
             this.RocketGift.TabIndex = 17;
             this.RocketGift.TabStop = false;
             // 
+            // DashboardGiftLabel
+            // 
+            this.DashboardGiftLabel.AutoSize = true;
+            this.DashboardGiftLabel.BackColor = System.Drawing.SystemColors.Desktop;
+            this.DashboardGiftLabel.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.DashboardGiftLabel.ForeColor = System.Drawing.Color.Orange;
+            this.DashboardGiftLabel.Location = new System.Drawing.Point(303, 631);
+            this.DashboardGiftLabel.Name = "DashboardGiftLabel";
+            this.DashboardGiftLabel.Size = new System.Drawing.Size(77, 16);
+            this.DashboardGiftLabel.TabIndex = 18;
+            this.DashboardGiftLabel.Text = "+1 Rocket";
+            // 
             // AsteroidsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::AsteroidsGame.Properties.Resources.Back;
             this.ClientSize = new System.Drawing.Size(684, 661);
+            this.Controls.Add(this.DashboardGiftLabel);
             this.Controls.Add(this.RocketGift);
             this.Controls.Add(this.QuitButton);
             this.Controls.Add(this.Restart);
@@ -353,6 +367,7 @@
         private System.Windows.Forms.PictureBox Start;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox RocketGift;
+        private System.Windows.Forms.Label DashboardGiftLabel;
     }
 }
 

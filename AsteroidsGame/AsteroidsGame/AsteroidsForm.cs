@@ -31,6 +31,7 @@ namespace AsteroidsGame
             RedGift.Hide();
             LaserPB.Hide();
             RocketGift.Hide();
+            DashboardGiftLabel.Hide();
 
             BombPB.BringToFront();
 
@@ -76,6 +77,7 @@ namespace AsteroidsGame
                 if (Gift.ContentShowTyme == 0)
                 {
                     RocketGift.Hide();
+                    DashboardGiftLabel.Hide();
                 }
             }
             // <----------------------------------<<
@@ -313,6 +315,7 @@ namespace AsteroidsGame
             RocketGift.Left = RedGift.Left + RedGift.Width / 2 - RocketGift.Width / 2;
             RocketGift.Top = RedGift.Top + RedGift.Height / 2;
             RocketGift.Show();
+            DashboardGiftLabel.Show();
             Gift.ContentShowTyme = GiftContentShowTime;
 
             LaserPB.Hide();
