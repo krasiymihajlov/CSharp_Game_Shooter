@@ -43,7 +43,7 @@ namespace AsteroidsGame
         private void ScoreCounter()
         {
             score++;
-            ScoreCount.Text = "Score = " + score;
+            ScoreCount.Text = "Score: " + score;
         }
 
         public void RocketCount(int count)
