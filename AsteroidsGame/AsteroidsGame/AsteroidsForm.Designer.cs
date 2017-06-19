@@ -50,6 +50,7 @@
             this.Pause = new System.Windows.Forms.PictureBox();
             this.Start = new System.Windows.Forms.PictureBox();
             this.GiftPositionTimer = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.BombPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplodingAsteroid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NukeCloud)).BeginInit();
@@ -63,6 +64,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pause)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Start)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // mouseXposer
@@ -126,7 +128,7 @@
             this.ScoreCount.AutoSize = true;
             this.ScoreCount.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ScoreCount.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ScoreCount.Location = new System.Drawing.Point(339, 597);
+            this.ScoreCount.Location = new System.Drawing.Point(337, 509);
             this.ScoreCount.Name = "ScoreCount";
             this.ScoreCount.Size = new System.Drawing.Size(101, 29);
             this.ScoreCount.TabIndex = 5;
@@ -137,7 +139,7 @@
             this.Rockets.AutoSize = true;
             this.Rockets.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.Rockets.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Rockets.Location = new System.Drawing.Point(339, 565);
+            this.Rockets.Location = new System.Drawing.Point(313, 470);
             this.Rockets.Name = "Rockets";
             this.Rockets.Size = new System.Drawing.Size(145, 29);
             this.Rockets.TabIndex = 4;
@@ -149,7 +151,7 @@
             this.label1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.label1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.label1.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(12, 565);
+            this.label1.Location = new System.Drawing.Point(10, 521);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(184, 29);
             this.label1.TabIndex = 3;
@@ -198,7 +200,7 @@
             this.QuitButton.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.QuitButton.Image = ((System.Drawing.Image)(resources.GetObject("QuitButton.Image")));
             this.QuitButton.InitialImage = ((System.Drawing.Image)(resources.GetObject("QuitButton.InitialImage")));
-            this.QuitButton.Location = new System.Drawing.Point(522, 565);
+            this.QuitButton.Location = new System.Drawing.Point(585, 489);
             this.QuitButton.Name = "QuitButton";
             this.QuitButton.Size = new System.Drawing.Size(96, 61);
             this.QuitButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -209,7 +211,7 @@
             // Restart
             // 
             this.Restart.Image = global::AsteroidsGame.Properties.Resources.restart_button_slider1;
-            this.Restart.Location = new System.Drawing.Point(522, 454);
+            this.Restart.Location = new System.Drawing.Point(585, 408);
             this.Restart.Name = "Restart";
             this.Restart.Size = new System.Drawing.Size(100, 71);
             this.Restart.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -227,11 +229,7 @@
             this.RedGift.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.RedGift.TabIndex = 12;
             this.RedGift.TabStop = false;
-            // 
-            // GiftPositionTimer
-            // 
-            this.GiftPositionTimer.Interval = 10;
-            this.GiftPositionTimer.Tick += new System.EventHandler(this.GiftPositionTimer_Tick);
+            this.RedGift.MouseClick += new System.Windows.Forms.MouseEventHandler(this.RedGift_MouseClick);
             // 
             // pictureBox4
             // 
@@ -244,7 +242,7 @@
             // Pause
             // 
             this.Pause.Image = global::AsteroidsGame.Properties.Resources.pause;
-            this.Pause.Location = new System.Drawing.Point(392, 366);
+            this.Pause.Location = new System.Drawing.Point(472, 366);
             this.Pause.Name = "Pause";
             this.Pause.Size = new System.Drawing.Size(107, 96);
             this.Pause.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -255,7 +253,7 @@
             // Start
             // 
             this.Start.Image = global::AsteroidsGame.Properties.Resources.start;
-            this.Start.Location = new System.Drawing.Point(384, 468);
+            this.Start.Location = new System.Drawing.Point(464, 470);
             this.Start.Name = "Start";
             this.Start.Size = new System.Drawing.Size(115, 80);
             this.Start.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -263,12 +261,29 @@
             this.Start.TabStop = false;
             this.Start.Click += new System.EventHandler(this.StartGame_Click);
             // 
+            // GiftPositionTimer
+            // 
+            this.GiftPositionTimer.Interval = 10;
+            this.GiftPositionTimer.Tick += new System.EventHandler(this.GiftPositionTimer_Tick);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox3.Image = global::AsteroidsGame.Properties.Resources.AirForce;
+            this.pictureBox3.Location = new System.Drawing.Point(-8, 556);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(700, 106);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox3.TabIndex = 16;
+            this.pictureBox3.TabStop = false;
+            // 
             // AsteroidsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::AsteroidsGame.Properties.Resources.Back;
             this.ClientSize = new System.Drawing.Size(684, 661);
+            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.Start);
             this.Controls.Add(this.Pause);
             this.Controls.Add(this.pictureBox4);
@@ -306,6 +321,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pause)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Start)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -333,6 +349,7 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox Pause;
         private System.Windows.Forms.PictureBox Start;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }
 

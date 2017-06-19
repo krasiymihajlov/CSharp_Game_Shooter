@@ -135,7 +135,7 @@ namespace AsteroidsGame
             {
                 DestroyedImageCounter++;
             }
-            else if (Bomb.Y >= rnd.Next(500, 600) || NukeCity)
+            else if (Bomb.Y >= rnd.Next(380, 470) || NukeCity)
             {
                 if (NukeCloudCounter == 0)
                 {
@@ -167,7 +167,7 @@ namespace AsteroidsGame
             //Gift logic -----------------------------------------
             if (!isGiftVisible)
             {
-                int showGiftRandom = rnd.Next(0, 200);
+                int showGiftRandom = rnd.Next(0, 20);
 
                 if (showGiftRandom == 1)
                 {
@@ -279,36 +279,6 @@ namespace AsteroidsGame
             LaserPB.Hide();
         }
 
-
-        private void pictureBox4_Click(object sender, MouseEventArgs e)
-        {
-            ////this is redGift
-            //if (e.Button == MouseButtons.Right) // Rocket
-            //{
-            //    if (Rocket.Count > 0 && !Rocket.IsFired)
-            //    {
-            //        RedGift.Hide();
-            //        int count = Rocket.Count--;
-            //        RocketCount(count - 1);
-            //        ScoreCounter();         // label for rocket counting
-            //        PlaySound.PlayMouseSound(e.Button);
-            //        Rocket.Fire(RocketPB, Height, BombPB.Left + BombPB.Width / 4);
-            //    }
-            //}
-            //else // Laser
-            //{
-            //    RedGift.Hide();
-
-            //    PlaySound.PlayMouseSound(e.Button);
-
-            //    Laser.LightUp(LaserPB, e.X, BombPB, true);
-            //}
-
-            //if (Gift.IsExploding)
-            //{
-            //    DestroyGift();
-            //}
-        }
         private void GiftPositionTimer_Tick(object sender, EventArgs e)
         {
             if (DestroyedGift || Gift.Y >= 700)
@@ -362,6 +332,37 @@ namespace AsteroidsGame
         private void QuitButton_Click(object sender, EventArgs e)
         {
             QuitGame.ExitGame();
+        }
+
+        private void RedGift_MouseClick(object sender, MouseEventArgs e)
+        {
+            //this is redGift
+            if (e.Button == MouseButtons.Right) // Rocket
+            {
+                if (Rocket.Count > 0 && !Rocket.IsFired)
+                {
+                    RedGift.Hide();
+                    int count = Rocket.Count--;
+                    RocketCount(count + 1);
+                    ScoreCounter();         // label for rocket counting
+                    PlaySound.PlayMouseSound(e.Button);
+                    Rocket.Fire(RocketPB, Height, BombPB.Left + BombPB.Width / 4);
+                }
+            }
+            else // Laser
+            {
+                RedGift.Hide();
+
+                PlaySound.PlayMouseSound(e.Button);
+                RocketCount(Rocket.Count + 1);
+
+                Laser.LightUp(LaserPB, e.X, BombPB, true);
+            }
+
+            if (Gift.IsExploding)
+            {
+                DestroyGift();
+            }
         }
     }
 }
