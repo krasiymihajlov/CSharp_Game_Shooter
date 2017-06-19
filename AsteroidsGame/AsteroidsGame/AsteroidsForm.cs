@@ -10,17 +10,16 @@ namespace AsteroidsGame
     public partial class AsteroidsForm : Form
     {
         private const int BombLife = 3;
+        private const int GiftContentShowTime = 10;
 
         private Random rnd = new Random();
         private static int score = 0;
         private static int DestroyedImageCounter = 0;
         private static bool Destroyed = false;
-        private static bool DestroyedGift = false;
         private static int NukeCloudCounter = 0;
-        private static int GiftCounter = 0;
-        private static int DestroyedGiftCounter = 0;
         private static bool NukeCity = false;
         private static bool isGiftVisible = false;
+
 
         public AsteroidsForm()
         {
@@ -31,6 +30,7 @@ namespace AsteroidsGame
             RocketPB.Hide();
             RedGift.Hide();
             LaserPB.Hide();
+            RocketGift.Hide();
 
             BombPB.BringToFront();
 
@@ -68,6 +68,18 @@ namespace AsteroidsGame
                 AsteroidPositionTimer.Stop();
             }
 
+            // Gift >>----------------------------->
+            if (Gift.ContentShowTyme > 0)
+            {
+                Gift.ContentShowTyme--;
+
+                if (Gift.ContentShowTyme == 0)
+                {
+                    RocketGift.Hide();
+                }
+            }
+            // <----------------------------------<<
+
             // Rocket movement >>------------------>
             if (Rocket.IsFired)
             {
@@ -79,10 +91,6 @@ namespace AsteroidsGame
             if (Bomb.IsExploding)
             {
                 DestroyBomb();
-            }
-            if (Gift.IsExploding)
-            {
-                RedGift.Hide();
             }
 
             // Laser >>---------------------------->
@@ -246,11 +254,14 @@ namespace AsteroidsGame
             //ExplodingAsteroid.Left = RedGift.Left - 10;
             //ExplodingAsteroid.Top = RedGift.Top - 20;
             //ExplodingAsteroid.Show();
-            PlaySound.PlayExplodeSound();
-            DestroyedGift = true;
-            Gift.IsExploding = false;
+            Gift.IsRocketComming = false;
             Rocket.IsFired = false;
             RocketPB.Hide();
+
+            RocketGift.Left = RedGift.Left + RedGift.Width / 2 - RocketGift.Width / 2;
+            RocketGift.Top = RedGift.Top + RedGift.Height / 2;
+            RocketGift.Show();
+            Gift.ContentShowTyme = GiftContentShowTime;
 
             AsteroidPositionTimer.Start();
             LaserPB.Hide();
@@ -258,9 +269,8 @@ namespace AsteroidsGame
 
         private void GiftPositionTimer_Tick(object sender, EventArgs e)
         {
-            if (DestroyedGift || Gift.Y >= 700)
+            if (Gift.Y >= 700)
             {
-                DestroyedGift = false;
                 isGiftVisible = false;
                 GiftPositionTimer.Stop();
                 RedGift.Hide();
@@ -293,7 +303,7 @@ namespace AsteroidsGame
             StartGame.IsStarted = false;
             Destroyed = true;
             Bomb.IsExploding = false;
-            Gift.IsExploding = false;
+            Gift.IsRocketComming = false;
             Rocket.IsFired = false;
             Bomb.Life = 3;
             BombPB.Hide();
@@ -324,6 +334,7 @@ namespace AsteroidsGame
                     ScoreCounter();         // label for rocket counting
                     PlaySound.PlayMouseSound(e.Button);
                     Rocket.Fire(RocketPB, Height, BombPB.Left + BombPB.Width / 4);
+                    Gift.IsRocketComming = true;
                 }
             }
             else // Laser
@@ -334,10 +345,6 @@ namespace AsteroidsGame
                 RocketCount(Rocket.Count + 1);
 
                 Laser.LightUp(LaserPB, e.X, BombPB, true);
-            }
-
-            if (Gift.IsExploding)
-            {
                 DestroyGift();
             }
         }
