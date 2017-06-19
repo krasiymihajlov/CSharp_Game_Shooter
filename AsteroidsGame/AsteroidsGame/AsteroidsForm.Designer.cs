@@ -282,6 +282,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::AsteroidsGame.Properties.Resources.Back;
             this.ClientSize = new System.Drawing.Size(684, 661);
+            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.Start);
             this.Controls.Add(this.Pause);
             this.Controls.Add(this.pictureBox4);
@@ -299,7 +300,6 @@
             this.Controls.Add(this.BombPB);
             this.Controls.Add(this.mouseXposer);
             this.Controls.Add(this.RocketPB);
-            this.Controls.Add(this.pictureBox3);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(700, 700);
             this.MinimumSize = new System.Drawing.Size(700, 700);
