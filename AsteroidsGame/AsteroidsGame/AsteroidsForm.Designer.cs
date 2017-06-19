@@ -51,6 +51,7 @@
             this.GiftPositionTimer = new System.Windows.Forms.Timer(this.components);
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.RocketGift = new System.Windows.Forms.PictureBox();
+            this.DashboardGiftLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.BombPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplodingAsteroid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NukeCloud)).BeginInit();
@@ -127,22 +128,24 @@
             // ScoreCount
             // 
             this.ScoreCount.AutoSize = true;
-            this.ScoreCount.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ScoreCount.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ScoreCount.Location = new System.Drawing.Point(290, 602);
+            this.ScoreCount.BackColor = System.Drawing.SystemColors.Desktop;
+            this.ScoreCount.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.ScoreCount.ForeColor = System.Drawing.Color.Red;
+            this.ScoreCount.Location = new System.Drawing.Point(292, 606);
             this.ScoreCount.Name = "ScoreCount";
-            this.ScoreCount.Size = new System.Drawing.Size(101, 29);
+            this.ScoreCount.Size = new System.Drawing.Size(73, 19);
             this.ScoreCount.TabIndex = 5;
-            this.ScoreCount.Text = "Score = 0";
+            this.ScoreCount.Text = "Score: 0";
             // 
             // Rockets
             // 
             this.Rockets.AutoSize = true;
-            this.Rockets.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.Rockets.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Rockets.Location = new System.Drawing.Point(290, 572);
+            this.Rockets.BackColor = System.Drawing.SystemColors.Desktop;
+            this.Rockets.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.Rockets.ForeColor = System.Drawing.Color.Red;
+            this.Rockets.Location = new System.Drawing.Point(293, 582);
             this.Rockets.Name = "Rockets";
-            this.Rockets.Size = new System.Drawing.Size(145, 29);
+            this.Rockets.Size = new System.Drawing.Size(100, 19);
             this.Rockets.TabIndex = 4;
             this.Rockets.Text = "Rockets: 10";
             // 
@@ -281,12 +284,25 @@
             this.RocketGift.TabIndex = 17;
             this.RocketGift.TabStop = false;
             // 
+            // DashboardGiftLabel
+            // 
+            this.DashboardGiftLabel.AutoSize = true;
+            this.DashboardGiftLabel.BackColor = System.Drawing.SystemColors.Desktop;
+            this.DashboardGiftLabel.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.DashboardGiftLabel.ForeColor = System.Drawing.Color.Orange;
+            this.DashboardGiftLabel.Location = new System.Drawing.Point(303, 631);
+            this.DashboardGiftLabel.Name = "DashboardGiftLabel";
+            this.DashboardGiftLabel.Size = new System.Drawing.Size(77, 16);
+            this.DashboardGiftLabel.TabIndex = 18;
+            this.DashboardGiftLabel.Text = "+1 Rocket";
+            // 
             // AsteroidsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::AsteroidsGame.Properties.Resources.Back;
             this.ClientSize = new System.Drawing.Size(684, 661);
+            this.Controls.Add(this.DashboardGiftLabel);
             this.Controls.Add(this.RocketGift);
             this.Controls.Add(this.QuitButton);
             this.Controls.Add(this.Restart);
@@ -355,6 +371,7 @@
         private System.Windows.Forms.PictureBox Start;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox RocketGift;
+        private System.Windows.Forms.Label DashboardGiftLabel;
     }
 }
 
