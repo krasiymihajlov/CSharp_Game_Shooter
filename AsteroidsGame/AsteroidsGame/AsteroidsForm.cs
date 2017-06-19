@@ -43,6 +43,7 @@ namespace AsteroidsGame
         {
             score++;
             ScoreCount.Text = "Score = " + score;
+
             //totalShots++;
             //label1.Text = "Total Shots = " + totalShots;
         }
