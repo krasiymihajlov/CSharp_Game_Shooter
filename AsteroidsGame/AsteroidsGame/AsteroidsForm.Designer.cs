@@ -44,6 +44,8 @@
             this.LaserPB = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.QuitButton = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.RedGift = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.BombPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplodingAsteroid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NukeCloud)).BeginInit();
@@ -52,6 +54,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.LaserPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.QuitButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RedGift)).BeginInit();
             this.SuspendLayout();
             // 
             // mouseXposer
@@ -103,6 +107,7 @@
             this.NukeCloud.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.NukeCloud.TabIndex = 3;
             this.NukeCloud.TabStop = false;
+         
             // 
             // imageList1
             // 
@@ -184,6 +189,7 @@
             // 
             // QuitButton
             // 
+            this.QuitButton.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.QuitButton.Image = ((System.Drawing.Image)(resources.GetObject("QuitButton.Image")));
             this.QuitButton.InitialImage = ((System.Drawing.Image)(resources.GetObject("QuitButton.InitialImage")));
             this.QuitButton.Location = new System.Drawing.Point(522, 565);
@@ -194,12 +200,33 @@
             this.QuitButton.TabStop = false;
             this.QuitButton.Click += new System.EventHandler(this.QuitButton_Click);
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox3.TabIndex = 11;
+            this.pictureBox3.TabStop = false;
+            // 
+            // RedGift
+            // 
+            this.RedGift.BackColor = System.Drawing.Color.Transparent;
+            this.RedGift.Image = ((System.Drawing.Image)(resources.GetObject("RedGift.Image")));
+            this.RedGift.Location = new System.Drawing.Point(0, 302);
+            this.RedGift.Name = "RedGift";
+            this.RedGift.Size = new System.Drawing.Size(77, 99);
+            this.RedGift.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.RedGift.TabIndex = 12;
+            this.RedGift.TabStop = false;
+            // 
             // AsteroidsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::AsteroidsGame.Properties.Resources.Back;
             this.ClientSize = new System.Drawing.Size(684, 661);
+            this.Controls.Add(this.RedGift);
+            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.QuitButton);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.LaserPB);
@@ -227,6 +254,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.LaserPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.QuitButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RedGift)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,6 +277,8 @@
         private System.Windows.Forms.PictureBox LaserPB;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox QuitButton;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox RedGift;
     }
 }
 

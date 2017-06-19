@@ -55,6 +55,8 @@
     <Compile Include="Bomb.cs" />
     <Compile Include="GameOption\QuitGame.cs" />
     <Compile Include="GameOption\ResetGame.cs" />
+    <Compile Include="Gift.cs" />
+    <Compile Include="Gifts\GiftShow.cs" />
     <Compile Include="Laser.cs" />
     <Compile Include="Rocket.cs" />
     <Compile Include="Scores\MissingShot.cs">
@@ -141,6 +143,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\quit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redGift.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

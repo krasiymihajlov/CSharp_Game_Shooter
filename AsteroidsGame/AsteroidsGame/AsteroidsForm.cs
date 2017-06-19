@@ -20,7 +20,10 @@ namespace AsteroidsGame
         private static int missingShots = 0;
         private static int DestroyedImageCounter = 0;
         private static bool Destroyed = false;
+        private static bool DestroyedGift = false;
         private static int NukeCloudCounter = 0;
+        private static int GiftCounter = 0;
+        private static int DestroyedGiftCounter = 0;
         private static bool NukeCity = false;
 
 
@@ -37,6 +40,9 @@ namespace AsteroidsGame
             Bomb.Life = BombLife;
             Rocket.Count = 10;
             LaserPB.Hide();
+            Gift.X = -30;
+            Gift.Y = 100;
+
         }
 
         private void ScoreCounter()
@@ -83,6 +89,7 @@ namespace AsteroidsGame
             if (Rocket.IsFired)
             {
                 Rocket.Move(RocketPB, BombPB);
+                //GiftShow.Move(RocketPB,RedGift);
             }
             // <----------------------------------<<
 
@@ -90,7 +97,10 @@ namespace AsteroidsGame
             {
                 DestroyBomb();
             }
-
+            if (Gift.IsExploding)
+            {
+                RedGift.Hide();
+            }
             // Laser >>---------------------------->
             if (Laser.TimeCounter > 0)
             {
@@ -149,6 +159,38 @@ namespace AsteroidsGame
                     NukeCloudCounter++;
                 }
             }
+            //Gift logic -----------------------------------------
+            Gift.X += 3;
+            RedGift.Location = new Point(Gift.X, Gift.Y);
+
+            if (DestroyedGiftCounter >= 10 && DestroyedGift)
+            {
+                //RedGift.Hide();
+                DestroyedGiftCounter = 0;
+
+                Gift.X = -30;
+                Gift.Y = 100;
+                DestroyedGift = false;
+
+            }
+            else if (DestroyedGift)
+            {
+                int count = Rocket.Count++;
+                RocketCount(count - 1);
+            }
+            else if (Gift.X >= 682)
+            {
+                if (GiftCounter >= 200)
+                {
+                    Gift.X = -30;
+                    RedGift.Location = new Point(Gift.X, Gift.Y);
+                    GiftCounter = 0;
+                }
+                else
+                {
+                    GiftCounter++;
+                }
+            }
         }
 
         // Shot Outside the target
@@ -194,7 +236,7 @@ namespace AsteroidsGame
             }
             else // Laser
             {
-                
+
                 PlaySound.PlayMouseSound(e.Button);
                 Bomb.Life--;
                 if (Bomb.Life == 0)
@@ -226,10 +268,55 @@ namespace AsteroidsGame
             AsteroidPositionTimer.Start();
             LaserPB.Hide();
         }
+        private void DestroyGift()
+        {
+            RedGift.Hide();
+            //ExplodingAsteroid.Left = RedGift.Left - 10;
+            //ExplodingAsteroid.Top = RedGift.Top - 20;
+            //ExplodingAsteroid.Show();
+            PlaySound.PlayExplodeSound();
+            DestroyedGift = true;
+            Gift.IsExploding = false;
+            Rocket.IsFired = false;
+            RocketPB.Hide();
+
+            AsteroidPositionTimer.Start();
+            LaserPB.Hide();
+        }
 
         private void QuitButton_Click(object sender, EventArgs e)
         {
             QuitGame.ExitGame();
+        }
+
+        private void pictureBox4_Click(object sender, MouseEventArgs e)
+        {
+            ////this is redGift
+            //if (e.Button == MouseButtons.Right) // Rocket
+            //{
+            //    if (Rocket.Count > 0 && !Rocket.IsFired)
+            //    {
+            //        RedGift.Hide();
+            //        int count = Rocket.Count--;
+            //        RocketCount(count - 1);
+            //        ScoreCounter();         // label for rocket counting
+            //        PlaySound.PlayMouseSound(e.Button);
+            //        Rocket.Fire(RocketPB, Height, BombPB.Left + BombPB.Width / 4);
+            //    }
+            //}
+            //else // Laser
+            //{
+            //    RedGift.Hide();
+
+            //    PlaySound.PlayMouseSound(e.Button);
+
+            //    Laser.LightUp(LaserPB, e.X, BombPB, true);
+            //}
+
+            //if (Gift.IsExploding)
+            //{
+            //    DestroyGift();
+            //}
         }
     }
 }
