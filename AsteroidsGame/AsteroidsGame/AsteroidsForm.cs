@@ -204,7 +204,7 @@ namespace AsteroidsGame
         {
             if (e.Button == MouseButtons.Right)
             {
-                if (Rocket.Count > 0 && !Rocket.IsFired)
+                if (Rocket.Count > 0 && !Rocket.IsFired && StartGame.IsStarted)
                 {
                     int count = Rocket.Count--;
                     RocketCount(count - 1);
@@ -214,8 +214,11 @@ namespace AsteroidsGame
             }
             else // mouse button == Left
             {
-                PlaySound.PlayMouseSound(e.Button);
-                Laser.LightUp(LaserPB, e.X, BombPB, false);
+                if(StartGame.IsStarted)
+                {
+                    PlaySound.PlayMouseSound(e.Button);
+                    Laser.LightUp(LaserPB, e.X, BombPB, false);
+                }                
             }
         }
 
@@ -224,7 +227,7 @@ namespace AsteroidsGame
         {
             if (e.Button == MouseButtons.Right) // Rocket
             {
-                if (Rocket.Count > 0 && !Rocket.IsFired)
+                if (Rocket.Count > 0 && !Rocket.IsFired && StartGame.IsStarted)
                 {
                     int count = Rocket.Count--;
                     RocketCount(count - 1);   
@@ -234,9 +237,12 @@ namespace AsteroidsGame
             }
             else // Laser
             {
-                PlaySound.PlayMouseSound(e.Button);
-                Bomb.Life--;
-                Laser.LightUp(LaserPB, e.X, BombPB, true);
+                if(StartGame.IsStarted)
+                {
+                    PlaySound.PlayMouseSound(e.Button);
+                    Bomb.Life--;
+                    Laser.LightUp(LaserPB, e.X, BombPB, true);
+                }                
             }
 
             if (Bomb.IsExploding || Bomb.Life <= 0)
@@ -250,7 +256,7 @@ namespace AsteroidsGame
             //this is redGift
             if (e.Button == MouseButtons.Right) // Rocket
             {
-                if (Rocket.Count > 0 && !Rocket.IsFired)
+                if (Rocket.Count > 0 && !Rocket.IsFired && StartGame.IsStarted)
                 {
                     RedGift.Hide();
                     int count = Rocket.Count--;
@@ -264,10 +270,13 @@ namespace AsteroidsGame
 
             else // Laser
             {
-                RedGift.Hide();
-                PlaySound.PlayMouseSound(e.Button);
-                Laser.LightUp(LaserPB, e.X, RedGift, true);
-                Gift.IsExploding = true;
+                if (StartGame.IsStarted)
+                {
+                    RedGift.Hide();
+                    PlaySound.PlayMouseSound(e.Button);
+                    Laser.LightUp(LaserPB, e.X, RedGift, true);
+                    Gift.IsExploding = true;
+                }                
             }
 
             if (Gift.IsExploding)
@@ -325,6 +334,7 @@ namespace AsteroidsGame
         {
             AsteroidPositionTimer.Stop();
             GiftPositionTimer.Stop();
+            StartGame.IsStarted = false;
         }
 
         private void StartGame_Click(object sender, EventArgs e)
