@@ -192,9 +192,9 @@
             this.QuitButton.BackColor = System.Drawing.Color.Black;
             this.QuitButton.Image = global::AsteroidsGame.Properties.Resources.quit;
             this.QuitButton.InitialImage = ((System.Drawing.Image)(resources.GetObject("QuitButton.InitialImage")));
-            this.QuitButton.Location = new System.Drawing.Point(620, 616);
+            this.QuitButton.Location = new System.Drawing.Point(613, 617);
             this.QuitButton.Name = "QuitButton";
-            this.QuitButton.Size = new System.Drawing.Size(66, 53);
+            this.QuitButton.Size = new System.Drawing.Size(69, 42);
             this.QuitButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.QuitButton.TabIndex = 10;
             this.QuitButton.TabStop = false;
@@ -204,9 +204,9 @@
             // 
             this.Restart.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Restart.Image = global::AsteroidsGame.Properties.Resources.restart;
-            this.Restart.Location = new System.Drawing.Point(537, 602);
+            this.Restart.Location = new System.Drawing.Point(105, 603);
             this.Restart.Name = "Restart";
-            this.Restart.Size = new System.Drawing.Size(46, 47);
+            this.Restart.Size = new System.Drawing.Size(44, 46);
             this.Restart.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Restart.TabIndex = 11;
             this.Restart.TabStop = false;
@@ -236,7 +236,7 @@
             // 
             this.Pause.BackColor = System.Drawing.Color.Black;
             this.Pause.Image = global::AsteroidsGame.Properties.Resources.pause;
-            this.Pause.Location = new System.Drawing.Point(103, 602);
+            this.Pause.Location = new System.Drawing.Point(537, 604);
             this.Pause.Name = "Pause";
             this.Pause.Size = new System.Drawing.Size(45, 43);
             this.Pause.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -248,9 +248,9 @@
             // 
             this.Start.BackColor = System.Drawing.Color.Black;
             this.Start.Image = global::AsteroidsGame.Properties.Resources.start;
-            this.Start.Location = new System.Drawing.Point(0, 616);
+            this.Start.Location = new System.Drawing.Point(3, 616);
             this.Start.Name = "Start";
-            this.Start.Size = new System.Drawing.Size(66, 53);
+            this.Start.Size = new System.Drawing.Size(66, 43);
             this.Start.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Start.TabIndex = 15;
             this.Start.TabStop = false;
@@ -288,11 +288,11 @@
             // 
             this.DashboardGiftLabel.AutoSize = true;
             this.DashboardGiftLabel.BackColor = System.Drawing.SystemColors.Desktop;
-            this.DashboardGiftLabel.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.DashboardGiftLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
             this.DashboardGiftLabel.ForeColor = System.Drawing.Color.Orange;
-            this.DashboardGiftLabel.Location = new System.Drawing.Point(303, 631);
+            this.DashboardGiftLabel.Location = new System.Drawing.Point(311, 632);
             this.DashboardGiftLabel.Name = "DashboardGiftLabel";
-            this.DashboardGiftLabel.Size = new System.Drawing.Size(77, 16);
+            this.DashboardGiftLabel.Size = new System.Drawing.Size(64, 15);
             this.DashboardGiftLabel.TabIndex = 18;
             this.DashboardGiftLabel.Text = "+1 Rocket";
             // 
@@ -312,15 +312,15 @@
             this.Controls.Add(this.Rockets);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.RedGift);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.LaserPB);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.NukeCloud);
-            this.Controls.Add(this.ExplodingAsteroid);
-            this.Controls.Add(this.BombPB);
             this.Controls.Add(this.mouseXposer);
             this.Controls.Add(this.RocketPB);
+            this.Controls.Add(this.RedGift);
+            this.Controls.Add(this.ExplodingAsteroid);
+            this.Controls.Add(this.BombPB);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(700, 700);
             this.MinimumSize = new System.Drawing.Size(700, 700);
