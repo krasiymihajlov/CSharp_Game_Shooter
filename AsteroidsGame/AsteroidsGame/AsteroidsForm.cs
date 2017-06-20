@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using AsteroidsGame.GameOption;
 using AsteroidsGame.Properties;
 using AsteroidsGame.Sounds;
+using System.Runtime.InteropServices;
 
 namespace AsteroidsGame
 {
@@ -52,14 +53,24 @@ namespace AsteroidsGame
             Rockets.Text = "Rockets: " + count;
         }
 
+        [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = CharSet.Auto)]
+        extern static bool DestroyIcon(IntPtr handle);
+
         private void AsteroidsForm_MouseMove(object sender, MouseEventArgs e)
         {
             // Show mouse position
             mouseXposer.Text = $"X: {e.X} / Y: {e.Y}";
-
+            
             // Convert the cursor to Gunsight
             PictureBox gunSight = new PictureBox() { Image = Resources.Sight };
-            this.Cursor = new Cursor(((Bitmap)gunSight.Image).GetHicon());
+            var tempIcon = (Bitmap)gunSight.Image;
+
+            // The resulting icon for the cursor should be disposed, so that the resources are released, otherwise the program crashes
+            IntPtr hicon = tempIcon.GetHicon();
+            Icon bitmapIcon = Icon.FromHandle(hicon);
+            this.Cursor = new Cursor(hicon);
+
+            DestroyIcon(bitmapIcon.Handle);
         }
 
         private void AsteroidPositionTimer_Tick(object sender, EventArgs e)
@@ -370,6 +381,11 @@ namespace AsteroidsGame
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RocketPB_Click(object sender, EventArgs e)
         {
 
         }

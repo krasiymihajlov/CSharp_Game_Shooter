@@ -167,6 +167,7 @@
             this.RocketPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.RocketPB.TabIndex = 7;
             this.RocketPB.TabStop = false;
+            this.RocketPB.Click += new System.EventHandler(this.RocketPB_Click);
             // 
             // LaserPB
             // 
