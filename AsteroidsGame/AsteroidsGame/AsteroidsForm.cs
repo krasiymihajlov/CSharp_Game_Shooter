@@ -402,6 +402,10 @@ namespace AsteroidsGame
             RocketCount(Rocket.Count);
             score = -1;
             ScoreCounter();
+
+            GameOver.Hide();
+            missCount = 6;
+            MissCounter();
         }
 
         private void QuitButton_Click(object sender, EventArgs e)
