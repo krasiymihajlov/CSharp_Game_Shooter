@@ -1,4 +1,6 @@
-﻿namespace AsteroidsGame
+﻿using System;
+
+namespace AsteroidsGame
 {
     partial class AsteroidsForm
     {
@@ -52,6 +54,8 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.RocketGift = new System.Windows.Forms.PictureBox();
             this.DashboardGiftLabel = new System.Windows.Forms.Label();
+            this.Lives = new System.Windows.Forms.Label();
+            this.GameOver = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.BombPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplodingAsteroid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NukeCloud)).BeginInit();
@@ -131,7 +135,7 @@
             this.ScoreCount.BackColor = System.Drawing.SystemColors.Desktop;
             this.ScoreCount.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.ScoreCount.ForeColor = System.Drawing.Color.Red;
-            this.ScoreCount.Location = new System.Drawing.Point(292, 606);
+            this.ScoreCount.Location = new System.Drawing.Point(290, 588);
             this.ScoreCount.Name = "ScoreCount";
             this.ScoreCount.Size = new System.Drawing.Size(73, 19);
             this.ScoreCount.TabIndex = 5;
@@ -143,7 +147,7 @@
             this.Rockets.BackColor = System.Drawing.SystemColors.Desktop;
             this.Rockets.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.Rockets.ForeColor = System.Drawing.Color.Red;
-            this.Rockets.Location = new System.Drawing.Point(293, 582);
+            this.Rockets.Location = new System.Drawing.Point(292, 569);
             this.Rockets.Name = "Rockets";
             this.Rockets.Size = new System.Drawing.Size(100, 19);
             this.Rockets.TabIndex = 4;
@@ -167,7 +171,6 @@
             this.RocketPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.RocketPB.TabIndex = 7;
             this.RocketPB.TabStop = false;
-            this.RocketPB.Click += new System.EventHandler(this.RocketPB_Click);
             // 
             // LaserPB
             // 
@@ -266,13 +269,12 @@
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Image = global::AsteroidsGame.Properties.Resources.AirForce;
-            this.pictureBox3.Location = new System.Drawing.Point(0, 563);
+            this.pictureBox3.Location = new System.Drawing.Point(0, 556);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(686, 106);
+            this.pictureBox3.Size = new System.Drawing.Size(686, 113);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 16;
             this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // RocketGift
             // 
@@ -297,12 +299,38 @@
             this.DashboardGiftLabel.TabIndex = 18;
             this.DashboardGiftLabel.Text = "+1 Rocket";
             // 
+            // Lives
+            // 
+            this.Lives.AutoSize = true;
+            this.Lives.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.Lives.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lives.ForeColor = System.Drawing.Color.Red;
+            this.Lives.Location = new System.Drawing.Point(292, 607);
+            this.Lives.Name = "Lives";
+            this.Lives.Size = new System.Drawing.Size(69, 19);
+            this.Lives.TabIndex = 19;
+            this.Lives.Text = "Lives: 5";
+            // 
+            // GameOver
+            // 
+            this.GameOver.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.GameOver.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GameOver.ForeColor = System.Drawing.Color.Red;
+            this.GameOver.Location = new System.Drawing.Point(292, 569);
+            this.GameOver.Name = "GameOver";
+            this.GameOver.Size = new System.Drawing.Size(100, 63);
+            this.GameOver.TabIndex = 20;
+            this.GameOver.Text = "Game Over";
+            this.GameOver.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // AsteroidsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::AsteroidsGame.Properties.Resources.Back;
             this.ClientSize = new System.Drawing.Size(684, 661);
+            this.Controls.Add(this.GameOver);
+            this.Controls.Add(this.Lives);
             this.Controls.Add(this.DashboardGiftLabel);
             this.Controls.Add(this.RocketGift);
             this.Controls.Add(this.QuitButton);
@@ -373,6 +401,8 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox RocketGift;
         private System.Windows.Forms.Label DashboardGiftLabel;
+        private System.Windows.Forms.Label Lives;
+        private System.Windows.Forms.Label GameOver;
     }
 }
 

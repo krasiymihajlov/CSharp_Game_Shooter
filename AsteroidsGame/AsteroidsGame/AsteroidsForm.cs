@@ -20,6 +20,7 @@ namespace AsteroidsGame
         private static int NukeCloudCounter = 0;
         private static bool NukeCity = false;
         private static bool isGiftVisible = false;
+        private static int missCount = 5;
 
 
         public AsteroidsForm()
@@ -33,6 +34,7 @@ namespace AsteroidsGame
             LaserPB.Hide();
             RocketGift.Hide();
             DashboardGiftLabel.Hide();
+            GameOver.Hide();
 
             BombPB.BringToFront();
 
@@ -46,6 +48,12 @@ namespace AsteroidsGame
         {
             score++;
             ScoreCount.Text = "Score: " + score;
+        }
+
+        private void MissCounter()
+        {
+            missCount--;
+            Lives.Text = "Lives: " + missCount;
         }
 
         public void RocketCount(int count)
@@ -140,6 +148,25 @@ namespace AsteroidsGame
                 if (NukeCloudCounter == 0)
                 {
                     NukeCity = true;
+
+                    MissCounter();
+                    if (missCount == 0)
+                    {
+                        AsteroidPositionTimer.Stop();
+                        GiftPositionTimer.Stop();
+                        StartGame.IsStarted = false;
+
+                        BombPB.Hide();
+                        RedGift.Hide();
+                        NukeCloud.Hide();
+                        ExplodingAsteroid.Hide();
+                        RocketPB.Hide();
+                        RocketGift.Hide();
+
+                        GameOver.Show();
+
+                    }
+
                     NukeCloud.Location = new Point(Bomb.X, Bomb.Y);
                     NukeCloud.Show();
 
@@ -370,6 +397,8 @@ namespace AsteroidsGame
             LaserPB.Hide();
             RedGift.Hide();
             Rocket.Count = 10;
+            ExplodingAsteroid.Hide();
+            NukeCloud.Hide();
             RocketCount(Rocket.Count);
             score = -1;
             ScoreCounter();
@@ -378,16 +407,6 @@ namespace AsteroidsGame
         private void QuitButton_Click(object sender, EventArgs e)
         {
             QuitGame.ExitGame();
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RocketPB_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
