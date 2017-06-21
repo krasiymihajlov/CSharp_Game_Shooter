@@ -20,6 +20,7 @@ namespace AsteroidsGame
         private static int NukeCloudCounter = 0;
         private static bool NukeCity = false;
         private static bool isGiftVisible = false;
+        private static int missCount = 5;
 
         public AsteroidsForm()
         {
@@ -32,6 +33,7 @@ namespace AsteroidsGame
             LaserPB.Hide();
             RocketGift.Hide();
             DashboardGiftLabel.Hide();
+            GameOver.Hide();
 
             LaserPB.BringToFront();
 
@@ -47,12 +49,19 @@ namespace AsteroidsGame
             ScoreCount.Text = "Score: " + score;
         }
 
+        private void MissCounter()
+        {
+            missCount--;
+            Lives.Text = "Lives: " + missCount;
+        }
+
         public void RocketCount(int count)
         {
             Rockets.Text = "Rockets: " + count;
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = CharSet.Auto)]
+
         private static extern bool DestroyIcon(IntPtr handle);
 
         private void AsteroidsForm_MouseMove(object sender, MouseEventArgs e)
@@ -194,6 +203,23 @@ namespace AsteroidsGame
             {
                 if (NukeCloudCounter == 0)
                 {
+                    MissCounter();
+                    if (missCount == 0)
+                    {
+                        AsteroidPositionTimer.Stop();
+                        StartGame.IsStarted = false;
+
+                        BombPB.Hide();
+                        RedGift.Hide();
+                        NukeCloud.Hide();
+                        ExplodingAsteroid.Hide();
+                        RocketPB.Hide();
+                        RocketGift.Hide();
+                        Lives.Hide();
+
+                        GameOver.Show();
+
+                    }
                     NukeCloud.Location = new Point(Bomb.X, Bomb.Y);
                     NukeCloud.Show();
                     PlaySound.PlayExplodeSound();
@@ -343,13 +369,13 @@ namespace AsteroidsGame
             RocketGift.Show();
             DashboardGiftLabel.Show();
             Gift.ContentShowTyme = GiftContentShowTime;
-            // FUCK THE SYSSTEM
         }
 
         private void PauseGame_Click(object sender, EventArgs e)
         {
             AsteroidPositionTimer.Stop();
             StartGame.IsStarted = false;
+            NukeCloud.Hide();
         }
 
         private void StartGame_Click(object sender, EventArgs e)
@@ -378,11 +404,17 @@ namespace AsteroidsGame
             RocketCount(Rocket.Count);
             score = -1;
             ScoreCounter();
+            Lives.Show();
+
+            GameOver.Hide();
+            missCount = 6;
+            MissCounter();
         }
 
         private void QuitButton_Click(object sender, EventArgs e)
         {
             QuitGame.ExitGame();
         }
+        
     }
 }

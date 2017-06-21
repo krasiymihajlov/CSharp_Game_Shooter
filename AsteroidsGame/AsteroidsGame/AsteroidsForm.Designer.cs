@@ -51,6 +51,8 @@
             this.RocketGift = new System.Windows.Forms.PictureBox();
             this.DashboardGiftLabel = new System.Windows.Forms.Label();
             this.AnimationTimer = new System.Windows.Forms.Timer(this.components);
+            this.GameOver = new System.Windows.Forms.Label();
+            this.Lives = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.BombPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplodingAsteroid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NukeCloud)).BeginInit();
@@ -122,7 +124,7 @@
             this.ScoreCount.BackColor = System.Drawing.SystemColors.Desktop;
             this.ScoreCount.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.ScoreCount.ForeColor = System.Drawing.Color.Red;
-            this.ScoreCount.Location = new System.Drawing.Point(292, 606);
+            this.ScoreCount.Location = new System.Drawing.Point(293, 593);
             this.ScoreCount.Name = "ScoreCount";
             this.ScoreCount.Size = new System.Drawing.Size(73, 19);
             this.ScoreCount.TabIndex = 5;
@@ -134,7 +136,7 @@
             this.Rockets.BackColor = System.Drawing.SystemColors.Desktop;
             this.Rockets.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.Rockets.ForeColor = System.Drawing.Color.Red;
-            this.Rockets.Location = new System.Drawing.Point(293, 582);
+            this.Rockets.Location = new System.Drawing.Point(293, 574);
             this.Rockets.Name = "Rockets";
             this.Rockets.Size = new System.Drawing.Size(100, 19);
             this.Rockets.TabIndex = 4;
@@ -285,12 +287,38 @@
             // 
             this.AnimationTimer.Tick += new System.EventHandler(this.AnimationTimer_Tick);
             // 
+            // GameOver
+            // 
+            this.GameOver.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.GameOver.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GameOver.ForeColor = System.Drawing.Color.Red;
+            this.GameOver.Location = new System.Drawing.Point(293, 574);
+            this.GameOver.Name = "GameOver";
+            this.GameOver.Size = new System.Drawing.Size(100, 63);
+            this.GameOver.TabIndex = 21;
+            this.GameOver.Text = "Game Over";
+            this.GameOver.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Lives
+            // 
+            this.Lives.AutoSize = true;
+            this.Lives.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.Lives.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lives.ForeColor = System.Drawing.Color.Red;
+            this.Lives.Location = new System.Drawing.Point(293, 613);
+            this.Lives.Name = "Lives";
+            this.Lives.Size = new System.Drawing.Size(69, 19);
+            this.Lives.TabIndex = 22;
+            this.Lives.Text = "Lives: 5";
+            // 
             // AsteroidsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::AsteroidsGame.Properties.Resources.Back;
             this.ClientSize = new System.Drawing.Size(684, 661);
+            this.Controls.Add(this.Lives);
+            this.Controls.Add(this.GameOver);
             this.Controls.Add(this.DashboardGiftLabel);
             this.Controls.Add(this.RocketGift);
             this.Controls.Add(this.QuitButton);
@@ -358,6 +386,8 @@
         private System.Windows.Forms.PictureBox RocketGift;
         private System.Windows.Forms.Label DashboardGiftLabel;
         private System.Windows.Forms.Timer AnimationTimer;
+        private System.Windows.Forms.Label GameOver;
+        private System.Windows.Forms.Label Lives;
     }
 }
 
