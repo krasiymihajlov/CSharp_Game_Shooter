@@ -220,6 +220,7 @@ namespace AsteroidsGame
                         GameOver.Show();
 
                     }
+                    NukeCity = true;
                     NukeCloud.Location = new Point(Bomb.X, Bomb.Y);
                     NukeCloud.Show();
                     PlaySound.PlayExplodeSound();
@@ -322,6 +323,7 @@ namespace AsteroidsGame
             ExplodingAsteroid.Show();
             PlaySound.PlayExplodeSound();
             Destroyed = true;
+            NukeCity = false;
             Bomb.IsExploding = false;
             Bomb.Life = 3;
             Rocket.IsFired = false;
@@ -340,15 +342,14 @@ namespace AsteroidsGame
 
             int[] giftXLocation = // Current Bomb Location X
             {
-                Bomb.X - RedGift.Width,
-                Bomb.X + RedGift.Width
+                Gift.X - RedGift.Width,
+                Gift.X + RedGift.Width
             };
 
-            while (Gift.X >= giftXLocation[0] && Gift.X <= giftXLocation[1])
+            while (Bomb.X >= giftXLocation[0] && Bomb.X <= giftXLocation[1])
             {
-                Gift.X = rnd.Next(BombPB.Width + 10, this.Width - BombPB.Width - 10);
+                Bomb.X = rnd.Next(BombPB.Width + 10, this.Width - BombPB.Width - 10);
             }
-            NukeCity = false;
             BombPB.Show();
         }
 
@@ -415,6 +416,5 @@ namespace AsteroidsGame
         {
             QuitGame.ExitGame();
         }
-        
     }
 }
