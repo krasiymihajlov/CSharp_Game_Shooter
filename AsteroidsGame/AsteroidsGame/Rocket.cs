@@ -1,5 +1,5 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using AsteroidsGame.Sounds;
 
 namespace AsteroidsGame
 {
@@ -17,15 +17,26 @@ namespace AsteroidsGame
             IsFired = true;
         }
 
-        internal static void Move(PictureBox rocketPB, PictureBox bomb)
+        internal static void Move(PictureBox rocketPB)
         {
             rocketPB.Top -= 55; // Speed of movement
 
             if (IsOnScreen(rocketPB))
             {
-                if (IsInTarget(rocketPB, bomb))
+                bool isInBomb;
+                bool isInGift;
+
+                if (IsInTarget(rocketPB, out isInGift, out isInBomb))
                 {
-                    Bomb.IsExploding = true;
+                    if (isInGift)
+                    {
+                        Gift.IsExploding = true;
+                    }
+                    else if (isInBomb)
+                    {
+                        Bomb.IsExploding = true;
+                    }
+                    PlaySound.PlayExplodeSound();
                 }
             }
         }
@@ -40,13 +51,19 @@ namespace AsteroidsGame
             return IsFired;
         }
 
-        private static bool IsInTarget(PictureBox rocketPB, PictureBox bombPB)
+        private static bool IsInTarget(PictureBox rocketPB, out bool isInGift, out bool isInBomb)
         {
             var rocketCenterX = rocketPB.Right - rocketPB.Width / 2;
 
-            return rocketPB.Top <= bombPB.Bottom &&
-                rocketCenterX >= bombPB.Left &&
-                rocketCenterX <= bombPB.Right + 10;
+            isInBomb = rocketPB.Top <= Bomb.Y &&
+                            rocketCenterX >= Bomb.X &&
+                            rocketCenterX <= Bomb.X + 50;
+
+            isInGift = rocketPB.Top <= Gift.Y &&
+                            rocketCenterX >= Gift.X &&
+                            rocketCenterX <= Gift.X + 50;
+
+            return isInGift || isInBomb;
         }
     }
 }

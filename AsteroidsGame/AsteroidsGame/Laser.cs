@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace AsteroidsGame
 {
@@ -9,12 +8,12 @@ namespace AsteroidsGame
 
         public static byte TimeCounter { get; set; }
 
-        internal static void LightUp(PictureBox laserPB, int x, PictureBox bombPB, bool isInTarget)
+        internal static void LightUp(PictureBox laserPB, int x, PictureBox targetPB, bool isInTarget)
         {
             if (isInTarget)
             {
-                laserPB.Left = bombPB.Left + bombPB.Width / 2;
-                laserPB.Top = bombPB.Bottom;
+                laserPB.Left = targetPB.Left + targetPB.Width / 2;
+                laserPB.Top = targetPB.Bottom;
             }
             else
             {

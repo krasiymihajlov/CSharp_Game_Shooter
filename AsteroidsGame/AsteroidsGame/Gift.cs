@@ -1,6 +1,4 @@
-﻿using System;
-
-public static class Gift
+﻿public static class Gift
 {
     public static int X { get; set; }
 

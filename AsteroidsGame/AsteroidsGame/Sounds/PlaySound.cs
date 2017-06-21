@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Media;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Media;
 using System.Windows.Forms;
 
 namespace AsteroidsGame.Sounds
@@ -14,6 +9,7 @@ namespace AsteroidsGame.Sounds
         /// Get path to the sorce files in sonds.
         /// </summary>
         private const string RocketSoundPath = "../../Resources/Rocket.wav";
+
         private const string LaserSoundPath = "../../Resources/Laser.wav";
         private const string BombSoundPath = "../../Resources/Bomb.wav";
 
@@ -21,6 +17,7 @@ namespace AsteroidsGame.Sounds
         /// Declared new SoundPlayer with sound path
         /// </summary>
         public static SoundPlayer rocketSound = new SoundPlayer(RocketSoundPath);
+
         public static SoundPlayer laserSound = new SoundPlayer(LaserSoundPath);
         public static SoundPlayer explodeSound = new SoundPlayer(BombSoundPath);
 
@@ -52,9 +49,11 @@ namespace AsteroidsGame.Sounds
                 case MouseButtons.Left:
                     laserSound.Play();
                     break;
+
                 case MouseButtons.Right:
                     rocketSound.Play();
                     break;
+
                 default:
                     break;
             }
