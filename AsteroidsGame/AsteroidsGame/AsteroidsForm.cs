@@ -1,13 +1,13 @@
-﻿using System;
-using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using AsteroidsGame.GameOption;
-using AsteroidsGame.Properties;
-using AsteroidsGame.Sounds;
-
-namespace AsteroidsGame
+﻿namespace AsteroidsGame
 {
+    using System;
+    using System.Drawing;
+    using System.Runtime.InteropServices;
+    using System.Windows.Forms;
+    using AsteroidsGame.GameOption;
+    using AsteroidsGame.Properties;
+    using AsteroidsGame.Sounds;
+
     public partial class AsteroidsForm : Form
     {
         private const int BombLife = 3;
@@ -15,12 +15,16 @@ namespace AsteroidsGame
 
         private Random rnd = new Random();
         private static int score = 0;
-        private static int DestroyedImageCounter = 0;
-        private static bool Destroyed = false;
-        private static int NukeCloudCounter = 0;
-        private static bool NukeCity = false;
+        private static int destroyedImageCounter = 0;
+        private static bool destroyed = false;
+        private static int nukeCloudCounter = 0;
+        private static bool nukeCity = false;
         private static bool isGiftVisible = false;
         private static int missCount = 5;
+
+        [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = CharSet.Auto)]
+
+        private static extern bool DestroyIcon(IntPtr handle);
 
         public AsteroidsForm()
         {
@@ -35,12 +39,14 @@ namespace AsteroidsGame
             DashboardGiftLabel.Hide();
             GameOver.Hide();
 
+            
             LaserPB.BringToFront();
+           // pictureBox3.BringToFront();
 
             Bomb.X = 200;
             Bomb.Y = -60;
             Bomb.Life = BombLife;
-            Rocket.Count = 10;
+            Rocket.count = 10;
         }
 
         private void ScoreCounter()
@@ -58,11 +64,7 @@ namespace AsteroidsGame
         public void RocketCount(int count)
         {
             Rockets.Text = "Rockets: " + count;
-        }
-
-        [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = CharSet.Auto)]
-
-        private static extern bool DestroyIcon(IntPtr handle);
+        }    
 
         private void AsteroidsForm_MouseMove(object sender, MouseEventArgs e)
         {
@@ -80,12 +82,15 @@ namespace AsteroidsGame
 
         private void AsteroidPositionTimer_Tick(object sender, EventArgs e)
         {
+            /// <summary>
+            /// When the game is not start with start buton, timer is stoped
+            /// </summary>
             if (!StartGame.GameIsStarted())
             {
                 AsteroidPositionTimer.Stop();
             }
 
-            // Gift >>----------------------------->
+
             if (Gift.ContentShowTyme > 0)
             {
                 Gift.ContentShowTyme--;
@@ -96,54 +101,66 @@ namespace AsteroidsGame
                     DashboardGiftLabel.Hide();
                 }
             }
-            // <----------------------------------<<
 
-            // Rocket movement >>------------------>
-            if (Rocket.IsFired)
+            /// <summary>
+            /// Look Rocket.cs class
+            /// </summary>
+            if (Rocket.isFired)
             {
                 Rocket.Move(RocketPB);
             }
-            // <----------------------------------<<
 
-            // Laser >>---------------------------->
+            /// <summary>
+            /// Chek count laser hits on asteroid and when asteroid is dead, hide Laser from the screen.
+            /// </summary>
             if (Laser.TimeCounter > 0)
             {
                 Laser.TimeCounter--;
             }
-
-            if (Laser.TimeCounter <= 0)
+            else
             {
                 LaserPB.Hide();
             }
-            // <----------------------------------<<
 
-            // Bomb >>----------------------------->
+            /// <summary>
+            /// If asteroid is hiting by laser or rocket, we destroying him.
+            /// </summary>
             if (Bomb.IsExploding)
             {
                 DestroyBomb();
             }
 
+            /// <summary>
+            /// Set new coordinates on asteroid and show bomb.
+            /// </summary>
             Bomb.Y += 7;
             BombPB.Location = new Point(Bomb.X, Bomb.Y);
             BombPB.Show();
 
+            /// <summary>
+            /// Chek coordinates and explode asteroid random on screen.
+            /// </summary>
             if (Bomb.Y >= rnd.Next(380, 470) && !Bomb.IsExploding)
             {
-                NukeCity = true;
-                NukeCloudCounter = 0;
+                nukeCity = true;
+                nukeCloudCounter = 0;
                 AnimationTimer.Start();
             }
-            // <-----------------------------------<<
 
-            //Gift --------------------------------->
+            /// <summary>
+            /// If gift is hiting by laser or rocket, we destroying him.
+            /// </summary>
             if (Gift.IsExploding)
             {
                 DestroyGift();
             }
 
+            /// <summary>
+            /// Logic encompasses the movement and the disappearance of the gift when it's not hiting.
+            /// </summary>
             if (isGiftVisible)
             {
-                if (Gift.Y >= 700) // Check if Gift is off screen
+                if (Gift.Y >= 700)
                 {
                     isGiftVisible = false;
                     RedGift.Hide();
@@ -163,45 +180,24 @@ namespace AsteroidsGame
                     SpawnGift();
                 }
             }
-            // <-----------------------------<<
-        }
-
-        private void SpawnGift()
-        {
-            int[] bombXLocation = // Current Bomb Location X
-            {
-                Bomb.X - BombPB.Width,
-                Bomb.X + BombPB.Width
-            };
-
-            Gift.X = rnd.Next(BombPB.Width + 10, this.Width - BombPB.Width - 10); // Gift X location randomizer
-
-            while (Gift.X >= bombXLocation[0] && Gift.X <= bombXLocation[1]) // While current gift X location is inside current bomb X location
-            {
-                Gift.X = rnd.Next(BombPB.Width + 10, this.Width - BombPB.Width - 10);
-            }
-
-            Gift.Y = -30; // Gift Y reset
-            RedGift.Location = new Point(Gift.X, Gift.Y);
-            RedGift.Show();
-        }
+        }             
 
         private void AnimationTimer_Tick(object sender, EventArgs e)
         {
-            if (DestroyedImageCounter > 1 && Destroyed)
+            if (destroyedImageCounter > 1 && destroyed)
             {
                 ExplodingAsteroid.Hide();
-                Destroyed = false;
-                DestroyedImageCounter = 0;
+                destroyed = false;
+                destroyedImageCounter = 0;
             }
-            else if (Destroyed)
+            else if (destroyed)
             {
-                DestroyedImageCounter++;
+                destroyedImageCounter++;
             }
 
-            if (NukeCity && !Destroyed)
+            if (nukeCity && !destroyed)
             {
-                if (NukeCloudCounter == 0)
+                if (nukeCloudCounter == 0)
                 {
                     MissCounter();
                     if (missCount == 0)
@@ -220,7 +216,7 @@ namespace AsteroidsGame
                         GameOver.Show();
 
                     }
-                    NukeCity = true;
+                    nukeCity = true;
                     NukeCloud.Location = new Point(Bomb.X, Bomb.Y);
                     NukeCloud.Show();
                     PlaySound.PlayExplodeSound();
@@ -228,14 +224,14 @@ namespace AsteroidsGame
                     Bomb.Life = BombLife;
                     SpawnNewBomb();
                 }
-                else if (NukeCloudCounter > 10)
+                else if (nukeCloudCounter > 10)
                 {
                     NukeCloud.Hide();
                     AnimationTimer.Stop();
-                    NukeCity = false;
+                    nukeCity = false;
                 }
 
-                NukeCloudCounter++;
+                nukeCloudCounter++;
             }
         }
 
@@ -244,9 +240,9 @@ namespace AsteroidsGame
         {
             if (e.Button == MouseButtons.Right)
             {
-                if (Rocket.Count > 0 && !Rocket.IsFired && StartGame.IsStarted)
+                if (Rocket.count > 0 && !Rocket.isFired && StartGame.IsStarted)
                 {
-                    int count = Rocket.Count--;
+                    int count = Rocket.count--;
                     RocketCount(count - 1);
                     PlaySound.PlayMouseSound(e.Button);
                     Rocket.Fire(RocketPB, Height, e.X);
@@ -267,10 +263,10 @@ namespace AsteroidsGame
         {
             if (e.Button == MouseButtons.Right) // Rocket
             {
-                if (Rocket.Count > 0 && !Rocket.IsFired && StartGame.IsStarted)
+                if (Rocket.count > 0 && !Rocket.isFired && StartGame.IsStarted)
                 {
-                    Rocket.Count--;
-                    RocketCount(Rocket.Count);
+                    Rocket.count--;
+                    RocketCount(Rocket.count);
                     PlaySound.PlayMouseSound(e.Button);
                     Rocket.Fire(RocketPB, Height, BombPB.Left + BombPB.Width / 4);
                 }
@@ -295,9 +291,9 @@ namespace AsteroidsGame
         {
             if (e.Button == MouseButtons.Right) // Rocket
             {
-                if (Rocket.Count > 0 && !Rocket.IsFired && StartGame.IsStarted)
+                if (Rocket.count > 0 && !Rocket.isFired && StartGame.IsStarted)
                 {
-                    int count = Rocket.Count--;
+                    int count = Rocket.count--;
                     RocketCount(count - 1);
                     ScoreCounter();         // label for rocket counting
                     PlaySound.PlayMouseSound(e.Button);
@@ -314,24 +310,25 @@ namespace AsteroidsGame
                 }
             }
         }
-
-        private void DestroyBomb()
+     
+        private void SpawnGift()
         {
-            BombPB.Hide();
-            ExplodingAsteroid.Left = BombPB.Left - 10;
-            ExplodingAsteroid.Top = BombPB.Top - 20;
-            ExplodingAsteroid.Show();
-            PlaySound.PlayExplodeSound();
-            Destroyed = true;
-            NukeCity = false;
-            Bomb.IsExploding = false;
-            Bomb.Life = 3;
-            Rocket.IsFired = false;
-            SpawnNewBomb();
-            RocketPB.Hide();
-            ScoreCounter();
-            AnimationTimer.Start();
-            LaserPB.Hide();
+            int[] bombXLocation = // Current Bomb Location X
+            {
+                Bomb.X - BombPB.Width,
+                Bomb.X + BombPB.Width
+            };
+
+            Gift.X = rnd.Next(BombPB.Width + 10, this.Width - BombPB.Width - 10); // Gift X location randomizer
+
+            while (Gift.X >= bombXLocation[0] && Gift.X <= bombXLocation[1]) // While current gift X location is inside current bomb X location
+            {
+                Gift.X = rnd.Next(BombPB.Width + 10, this.Width - BombPB.Width - 10);
+            }
+
+            Gift.Y = -30; // Gift Y reset
+            RedGift.Location = new Point(Gift.X, Gift.Y);
+            RedGift.Show();
         }
 
         private void SpawnNewBomb()
@@ -350,19 +347,40 @@ namespace AsteroidsGame
             {
                 Bomb.X = rnd.Next(BombPB.Width + 10, this.Width - BombPB.Width - 10);
             }
+
             BombPB.Show();
+        }
+
+        private void DestroyBomb()
+        {
+            BombPB.Hide();
+            ExplodingAsteroid.Left = BombPB.Left - 10;
+            ExplodingAsteroid.Top = BombPB.Top - 20;
+            ExplodingAsteroid.Show();
+
+            PlaySound.PlayExplodeSound();
+            destroyed = true;
+            nukeCity = false;
+            Bomb.IsExploding = false;
+            Bomb.Life = 3;
+            Rocket.isFired = false;
+            SpawnNewBomb();
+            RocketPB.Hide();
+            LaserPB.Hide();
+            ScoreCounter();
+            AnimationTimer.Start();
         }
 
         private void DestroyGift()
         {
             Gift.IsRocketComming = false;
-            Rocket.IsFired = false;
+            Rocket.isFired = false;
             RocketPB.Hide();
             RedGift.Hide();
             score += 4;
             ScoreCounter();
-            Rocket.Count++;
-            RocketCount(Rocket.Count);
+            Rocket.count++;
+            RocketCount(Rocket.count);
             isGiftVisible = false;
             Gift.IsExploding = false;
             RocketGift.Left = RedGift.Left + RedGift.Width / 2 - RocketGift.Width / 2;
@@ -389,11 +407,11 @@ namespace AsteroidsGame
         {
             AsteroidPositionTimer.Stop();
             StartGame.IsStarted = false;
-            Destroyed = false;
+            destroyed = false;
             Bomb.IsExploding = false;
             Gift.IsRocketComming = false;
-            Rocket.IsFired = false;
-            NukeCity = false;
+            Rocket.isFired = false;
+            nukeCity = false;
             Bomb.Life = 3;
             Bomb.Y = -30;
             Gift.Y = -30;
@@ -401,8 +419,8 @@ namespace AsteroidsGame
             RocketPB.Hide();
             LaserPB.Hide();
             RedGift.Hide();
-            Rocket.Count = 10;
-            RocketCount(Rocket.Count);
+            Rocket.count = 10;
+            RocketCount(Rocket.count);
             score = -1;
             ScoreCounter();
             Lives.Show();

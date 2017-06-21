@@ -2,7 +2,7 @@
 
 namespace AsteroidsGame
 {
-    public static class Laser
+    public static class Laser 
     {
         public const byte TimeToShow = 5;
 

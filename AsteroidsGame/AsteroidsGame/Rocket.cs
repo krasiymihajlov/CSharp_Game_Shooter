@@ -1,25 +1,28 @@
-﻿using System.Windows.Forms;
-using AsteroidsGame.Sounds;
-
-namespace AsteroidsGame
+﻿namespace AsteroidsGame
 {
-    internal static class Rocket
-    {
-        public static bool IsFired { get; set; }
+    using System.Windows.Forms;
+    using AsteroidsGame.Sounds;
 
-        public static int Count { get; set; }
+    internal static class Rocket 
+    {
+        public static bool isFired { get; set; }
+
+        public static int count { get; set; }
 
         internal static void Fire(PictureBox rocketPB, int formHeight, int x)
         {
             rocketPB.Top = formHeight + rocketPB.Height;
             rocketPB.Left = x;
             rocketPB.Show();
-            IsFired = true;
+            isFired = true;
         }
 
+        /// <summary>
+        /// If rocket is fired set move speed and check if she hit or miss the target
+        /// </summary>
         internal static void Move(PictureBox rocketPB)
         {
-            rocketPB.Top -= 55; // Speed of movement
+            rocketPB.Top -= 55;
 
             if (IsOnScreen(rocketPB))
             {
@@ -36,6 +39,7 @@ namespace AsteroidsGame
                     {
                         Bomb.IsExploding = true;
                     }
+
                     PlaySound.PlayExplodeSound();
                 }
             }
@@ -45,10 +49,10 @@ namespace AsteroidsGame
         {
             if (rocketPB.Bottom <= 0 - rocketPB.Height)
             {
-                IsFired = false;
+                isFired = false;
             }
 
-            return IsFired;
+            return isFired;
         }
 
         private static bool IsInTarget(PictureBox rocketPB, out bool isInGift, out bool isInBomb)
@@ -57,11 +61,11 @@ namespace AsteroidsGame
 
             isInBomb = rocketPB.Top <= Bomb.Y &&
                             rocketCenterX >= Bomb.X &&
-                            rocketCenterX <= Bomb.X + 50;
+                            rocketCenterX <= Bomb.X + 60;
 
             isInGift = rocketPB.Top <= Gift.Y &&
                             rocketCenterX >= Gift.X &&
-                            rocketCenterX <= Gift.X + 50;
+                            rocketCenterX <= Gift.X + 60;
 
             return isInGift || isInBomb;
         }
