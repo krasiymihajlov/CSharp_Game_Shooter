@@ -19,6 +19,7 @@ namespace AsteroidsGame
         private static int NukeCloudCounter = 0;
         private static bool NukeCity = false;
         private static bool isGiftVisible = false;
+        private static int missCount = 5;
 
 
         public AsteroidsForm()
@@ -39,6 +40,7 @@ namespace AsteroidsGame
             Bomb.Y = -60;
             Bomb.Life = BombLife;
             Rocket.Count = 10;
+            GameOver.Hide();
         }
 
         private void ScoreCounter()
@@ -47,6 +49,11 @@ namespace AsteroidsGame
             ScoreCount.Text = "Score: " + score;
         }
 
+        private void MissCounter()
+        {
+            missCount--;
+            life.Text = "Lives: " + missCount;
+        }
         public void RocketCount(int count)
         {
             Rockets.Text = "Rockets: " + count;
@@ -129,6 +136,21 @@ namespace AsteroidsGame
                 if (NukeCloudCounter == 0)
                 {
                     NukeCity = true;
+                    MissCounter();
+
+                    if (missCount == 0)
+                    {
+                        AsteroidPositionTimer.Stop();
+                        GiftPositionTimer.Stop();
+                        StartGame.IsStarted = false;
+                        GameOver.Show();
+                        ScoreCount.Hide();
+                        life.Hide();
+                        Rockets.Hide();
+                        BombPB.Hide();
+                        ExplodingAsteroid.Hide();
+                    }
+
                     NukeCloud.Location = new Point(Bomb.X, Bomb.Y);
                     NukeCloud.Show();
 
@@ -359,6 +381,8 @@ namespace AsteroidsGame
             LaserPB.Hide();
             RedGift.Hide();
             Rocket.Count = 10;
+            missCount = 5;
+            GameOver.Hide();
             RocketCount(Rocket.Count);
             score = -1;
             ScoreCounter();
@@ -373,5 +397,6 @@ namespace AsteroidsGame
         {
 
         }
+        
     }
 }

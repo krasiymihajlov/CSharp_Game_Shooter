@@ -52,6 +52,8 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.RocketGift = new System.Windows.Forms.PictureBox();
             this.DashboardGiftLabel = new System.Windows.Forms.Label();
+            this.GameOver = new System.Windows.Forms.Label();
+            this.life = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.BombPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplodingAsteroid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NukeCloud)).BeginInit();
@@ -131,7 +133,7 @@
             this.ScoreCount.BackColor = System.Drawing.SystemColors.Desktop;
             this.ScoreCount.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.ScoreCount.ForeColor = System.Drawing.Color.Red;
-            this.ScoreCount.Location = new System.Drawing.Point(292, 606);
+            this.ScoreCount.Location = new System.Drawing.Point(303, 606);
             this.ScoreCount.Name = "ScoreCount";
             this.ScoreCount.Size = new System.Drawing.Size(73, 19);
             this.ScoreCount.TabIndex = 5;
@@ -290,11 +292,35 @@
             this.DashboardGiftLabel.BackColor = System.Drawing.SystemColors.Desktop;
             this.DashboardGiftLabel.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.DashboardGiftLabel.ForeColor = System.Drawing.Color.Orange;
-            this.DashboardGiftLabel.Location = new System.Drawing.Point(303, 631);
+            this.DashboardGiftLabel.Location = new System.Drawing.Point(214, 649);
             this.DashboardGiftLabel.Name = "DashboardGiftLabel";
             this.DashboardGiftLabel.Size = new System.Drawing.Size(77, 16);
             this.DashboardGiftLabel.TabIndex = 18;
             this.DashboardGiftLabel.Text = "+1 Rocket";
+            // 
+            // GameOver
+            // 
+            this.GameOver.AutoSize = true;
+            this.GameOver.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.GameOver.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GameOver.ForeColor = System.Drawing.Color.Red;
+            this.GameOver.Location = new System.Drawing.Point(290, 582);
+            this.GameOver.Name = "GameOver";
+            this.GameOver.Size = new System.Drawing.Size(110, 24);
+            this.GameOver.TabIndex = 19;
+            this.GameOver.Text = "GameOver";
+            // 
+            // life
+            // 
+            this.life.AutoSize = true;
+            this.life.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.life.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.life.ForeColor = System.Drawing.Color.DarkOrange;
+            this.life.Location = new System.Drawing.Point(390, 645);
+            this.life.Name = "life";
+            this.life.Size = new System.Drawing.Size(74, 20);
+            this.life.TabIndex = 20;
+            this.life.Text = "lives = 5";
             // 
             // AsteroidsForm
             // 
@@ -302,6 +328,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::AsteroidsGame.Properties.Resources.Back;
             this.ClientSize = new System.Drawing.Size(684, 661);
+            this.Controls.Add(this.life);
+            this.Controls.Add(this.GameOver);
             this.Controls.Add(this.DashboardGiftLabel);
             this.Controls.Add(this.RocketGift);
             this.Controls.Add(this.QuitButton);
@@ -372,6 +400,8 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox RocketGift;
         private System.Windows.Forms.Label DashboardGiftLabel;
+        private System.Windows.Forms.Label GameOver;
+        private System.Windows.Forms.Label life;
     }
 }
 
