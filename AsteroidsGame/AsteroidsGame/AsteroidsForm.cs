@@ -343,6 +343,7 @@ namespace AsteroidsGame
             RocketGift.Show();
             DashboardGiftLabel.Show();
             Gift.ContentShowTyme = GiftContentShowTime;
+            // FUCK THE SYSSTEM
         }
 
         private void PauseGame_Click(object sender, EventArgs e)
