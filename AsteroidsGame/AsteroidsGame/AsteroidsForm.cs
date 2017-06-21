@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using AsteroidsGame.GameOption;
 using AsteroidsGame.Properties;
 using AsteroidsGame.Sounds;
+using System.Runtime.InteropServices;
 
 namespace AsteroidsGame
 {
@@ -33,6 +34,7 @@ namespace AsteroidsGame
             LaserPB.Hide();
             RocketGift.Hide();
             DashboardGiftLabel.Hide();
+            GameOver.Hide();
 
             BombPB.BringToFront();
 
@@ -52,21 +54,32 @@ namespace AsteroidsGame
         private void MissCounter()
         {
             missCount--;
-            life.Text = "Lives: " + missCount;
+            Lives.Text = "Lives: " + missCount;
         }
+
         public void RocketCount(int count)
         {
             Rockets.Text = "Rockets: " + count;
         }
 
+        [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = CharSet.Auto)]
+        extern static bool DestroyIcon(IntPtr handle);
+
         private void AsteroidsForm_MouseMove(object sender, MouseEventArgs e)
         {
             // Show mouse position
             mouseXposer.Text = $"X: {e.X} / Y: {e.Y}";
-
+            
             // Convert the cursor to Gunsight
             PictureBox gunSight = new PictureBox() { Image = Resources.Sight };
-            this.Cursor = new Cursor(((Bitmap)gunSight.Image).GetHicon());
+            var tempIcon = (Bitmap)gunSight.Image;
+
+            // The resulting icon for the cursor should be disposed, so that the resources are released, otherwise the program crashes
+            IntPtr hicon = tempIcon.GetHicon();
+            Icon bitmapIcon = Icon.FromHandle(hicon);
+            this.Cursor = new Cursor(hicon);
+
+            DestroyIcon(bitmapIcon.Handle);
         }
 
         private void AsteroidPositionTimer_Tick(object sender, EventArgs e)
@@ -136,19 +149,23 @@ namespace AsteroidsGame
                 if (NukeCloudCounter == 0)
                 {
                     NukeCity = true;
-                    MissCounter();
 
+                    MissCounter();
                     if (missCount == 0)
                     {
                         AsteroidPositionTimer.Stop();
                         GiftPositionTimer.Stop();
                         StartGame.IsStarted = false;
-                        GameOver.Show();
-                        ScoreCount.Hide();
-                        life.Hide();
-                        Rockets.Hide();
+
                         BombPB.Hide();
+                        RedGift.Hide();
+                        NukeCloud.Hide();
                         ExplodingAsteroid.Hide();
+                        RocketPB.Hide();
+                        RocketGift.Hide();
+
+                        GameOver.Show();
+
                     }
 
                     NukeCloud.Location = new Point(Bomb.X, Bomb.Y);
@@ -381,21 +398,20 @@ namespace AsteroidsGame
             LaserPB.Hide();
             RedGift.Hide();
             Rocket.Count = 10;
-            missCount = 5;
-            GameOver.Hide();
+            ExplodingAsteroid.Hide();
+            NukeCloud.Hide();
             RocketCount(Rocket.Count);
             score = -1;
             ScoreCounter();
+
+            GameOver.Hide();
+            missCount = 6;
+            MissCounter();
         }
 
         private void QuitButton_Click(object sender, EventArgs e)
         {
             QuitGame.ExitGame();
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
         }
         
     }
