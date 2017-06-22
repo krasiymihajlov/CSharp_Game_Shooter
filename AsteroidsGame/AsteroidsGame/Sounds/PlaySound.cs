@@ -1,15 +1,14 @@
-﻿using System.Media;
-using System.Windows.Forms;
-
-namespace AsteroidsGame.Sounds
+﻿namespace AsteroidsGame.Sounds
 {
+    using System.Media;
+    using System.Windows.Forms;
+
     public class PlaySound
     {
         /// <summary>
         /// Get path to the sorce files in sonds.
         /// </summary>
         private const string RocketSoundPath = "../../Resources/Rocket.wav";
-
         private const string LaserSoundPath = "../../Resources/Laser.wav";
         private const string BombSoundPath = "../../Resources/Bomb.wav";
 

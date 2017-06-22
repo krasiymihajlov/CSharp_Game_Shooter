@@ -1,7 +1,7 @@
-﻿using System.Windows.Forms;
-
-namespace AsteroidsGame
+﻿namespace AsteroidsGame
 {
+    using System.Windows.Forms;
+
     public static class Laser 
     {
         public const byte TimeToShow = 5;

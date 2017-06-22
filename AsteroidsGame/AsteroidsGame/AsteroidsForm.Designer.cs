@@ -37,17 +37,14 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.ScoreCount = new System.Windows.Forms.Label();
             this.Rockets = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.RocketPB = new System.Windows.Forms.PictureBox();
             this.LaserPB = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.QuitButton = new System.Windows.Forms.PictureBox();
             this.Restart = new System.Windows.Forms.PictureBox();
             this.RedGift = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.Pause = new System.Windows.Forms.PictureBox();
             this.Start = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.AirPlaneCabin = new System.Windows.Forms.PictureBox();
             this.RocketGift = new System.Windows.Forms.PictureBox();
             this.DashboardGiftLabel = new System.Windows.Forms.Label();
             this.AnimationTimer = new System.Windows.Forms.Timer(this.components);
@@ -56,17 +53,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.BombPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplodingAsteroid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NukeCloud)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RocketPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LaserPB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.QuitButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Restart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RedGift)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pause)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Start)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AirPlaneCabin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RocketGift)).BeginInit();
             this.SuspendLayout();
             // 
@@ -142,14 +136,6 @@
             this.Rockets.TabIndex = 4;
             this.Rockets.Text = "Rockets: 10";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(-23, -46);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
             // RocketPB
             // 
             this.RocketPB.BackColor = System.Drawing.Color.Transparent;
@@ -171,14 +157,6 @@
             this.LaserPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.LaserPB.TabIndex = 8;
             this.LaserPB.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(-23, -46);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox2.TabIndex = 9;
-            this.pictureBox2.TabStop = false;
             // 
             // QuitButton
             // 
@@ -217,14 +195,6 @@
             this.RedGift.TabStop = false;
             this.RedGift.MouseClick += new System.Windows.Forms.MouseEventHandler(this.RedGift_MouseClick);
             // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Location = new System.Drawing.Point(-23, -46);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox4.TabIndex = 13;
-            this.pictureBox4.TabStop = false;
-            // 
             // Pause
             // 
             this.Pause.BackColor = System.Drawing.Color.Black;
@@ -249,16 +219,16 @@
             this.Start.TabStop = false;
             this.Start.Click += new System.EventHandler(this.StartGame_Click);
             // 
-            // pictureBox3
+            // AirPlaneCabin
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.Image = global::AsteroidsGame.Properties.Resources.AirForce;
-            this.pictureBox3.Location = new System.Drawing.Point(0, 563);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(686, 106);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 16;
-            this.pictureBox3.TabStop = false;
+            this.AirPlaneCabin.BackColor = System.Drawing.Color.Transparent;
+            this.AirPlaneCabin.Image = global::AsteroidsGame.Properties.Resources.AirForce;
+            this.AirPlaneCabin.Location = new System.Drawing.Point(0, 563);
+            this.AirPlaneCabin.Name = "AirPlaneCabin";
+            this.AirPlaneCabin.Size = new System.Drawing.Size(686, 106);
+            this.AirPlaneCabin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.AirPlaneCabin.TabIndex = 16;
+            this.AirPlaneCabin.TabStop = false;
             // 
             // RocketGift
             // 
@@ -327,11 +297,8 @@
             this.Controls.Add(this.Start);
             this.Controls.Add(this.ScoreCount);
             this.Controls.Add(this.Rockets);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.AirPlaneCabin);
             this.Controls.Add(this.LaserPB);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.NukeCloud);
             this.Controls.Add(this.RocketPB);
             this.Controls.Add(this.RedGift);
@@ -347,17 +314,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.BombPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplodingAsteroid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NukeCloud)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RocketPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LaserPB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.QuitButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Restart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RedGift)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pause)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Start)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AirPlaneCabin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RocketGift)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -370,19 +334,16 @@
         private System.Windows.Forms.PictureBox ExplodingAsteroid;
         private System.Windows.Forms.Label ScoreCount;
         private System.Windows.Forms.Label Rockets;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.PictureBox NukeCloud;
         private System.Windows.Forms.PictureBox RocketPB;
         private System.Windows.Forms.PictureBox LaserPB;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox QuitButton;
         private System.Windows.Forms.PictureBox Restart;
         private System.Windows.Forms.PictureBox RedGift;
-        private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox Pause;
         private System.Windows.Forms.PictureBox Start;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox AirPlaneCabin;
         private System.Windows.Forms.PictureBox RocketGift;
         private System.Windows.Forms.Label DashboardGiftLabel;
         private System.Windows.Forms.Timer AnimationTimer;

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Windows.Forms;
-
-namespace AsteroidsGame
+﻿namespace AsteroidsGame
 {
+    using System;
+    using System.Windows.Forms;
+
     internal static class StartUp
     {
         /// <summary>

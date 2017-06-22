@@ -4,11 +4,11 @@
 
     public class QuitGame
     {
-        private const int exit = 0;
+        private const int Exit = 0;
 
         public static void ExitGame()
         {
-            Environment.Exit(exit);
+            Environment.Exit(Exit);
         }
     }
 }

@@ -5,16 +5,16 @@
 
     internal static class Rocket 
     {
-        public static bool isFired { get; set; }
+        public static bool IsFired { get; set; } 
 
-        public static int count { get; set; }
+        public static int Count { get; set; }
 
         internal static void Fire(PictureBox rocketPB, int formHeight, int x)
         {
             rocketPB.Top = formHeight + rocketPB.Height;
             rocketPB.Left = x;
             rocketPB.Show();
-            isFired = true;
+            IsFired = true;
         }
 
         /// <summary>
@@ -49,10 +49,10 @@
         {
             if (rocketPB.Bottom <= 0 - rocketPB.Height)
             {
-                isFired = false;
+                IsFired = false;
             }
 
-            return isFired;
+            return IsFired;
         }
 
         private static bool IsInTarget(PictureBox rocketPB, out bool isInGift, out bool isInBomb)
